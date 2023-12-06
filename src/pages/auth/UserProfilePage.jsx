@@ -1,7 +1,17 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
 function ProfilePage() {
+  const { user } = useContext(AuthContext);
   return (
     <div>
-      <h1>Profile page</h1>
+      {user &&
+        <>
+          <h1>Profile page</h1>
+          <p>{user.username}</p>
+          <p>{user.email}</p>
+        </>
+      }
     </div>
   );
 }

@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/auth/UserProfilePage";
 import SignupPage from "./pages/auth/SignupPage";
 import LoginPage from "./pages/auth/LoginPage";
+import Mockup from "./pages/Mockup"
 
 
 
@@ -20,6 +21,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/mockup" element={<Mockup />} />
 
         <Route
           path="/profile"
