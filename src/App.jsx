@@ -11,7 +11,8 @@ import LoginPage from "./pages/auth/LoginPage";
 
 import Navbar from './components/Navbar';
 import HomePage from "./pages/HomePage";
-import CreateGame from "./pages/game/CreateGame"
+import CreateGame from "./pages/game/CreateGame";
+import GameDetail from "./pages/game/GameDetail";
 
 import Mockup from "./pages/Mockup"
 
@@ -55,6 +56,7 @@ function App() {
         />
 
         <Route path="/game/create" element={<CreateGame />} />
+        <Route path="/game/:gameId" element={<GameDetail />} />
 
       </Routes>
 

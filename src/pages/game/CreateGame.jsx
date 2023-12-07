@@ -28,7 +28,7 @@ function CreateGame(props) {
             .createGame(requestBody)
             .then((response) => {
                 const newGame = response.data;
-                navigate(`/games/${newGame._id}`);
+                navigate(`/game/${newGame._id}`);
             })
             .catch((error) => {
                 console.log(error);
@@ -39,6 +39,7 @@ function CreateGame(props) {
 
     return (
         <div>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <h3>Create new game</h3>
 
@@ -54,7 +55,7 @@ function CreateGame(props) {
 
                 <button type="submit">Create game</button>
             </form>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
         </div>
     )
 }

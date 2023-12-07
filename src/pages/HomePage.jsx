@@ -21,13 +21,17 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Home page</h1>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <h1>Home page</h1>
             <h2>Games list</h2>
             <ul>
                 {games && games.map((game) => {
                     return (
-                        <li key={game._id}>{game.name}</li>
+                        <li key={game._id}>
+                            <Link to={`/game/${game._id}`}>
+                                {game.name}
+                            </Link>
+                        </li>
                     )
                 })}
             </ul>
