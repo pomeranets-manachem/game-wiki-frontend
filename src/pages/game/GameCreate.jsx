@@ -8,17 +8,8 @@ function GameCreate(props) {
     const [gameName, setGameName] = useState('');
     const [gameInformations, setGameInformations] = useState('');
     const [gameImageURL, setGameImageURL] = useState('');
+
     const [categoriesOptions, setCategoriesOptions] = useState([])
-
-    // let categoriesOptions = []
-
-    let options = [
-        { value: 1, label: "Blue" },
-        { value: 2, label: "Green" },
-        { value: 3, label: "Orange" },
-        { value: 4, label: "Purple" },
-    ];
-
     const [selectedCategories, setSelectedCategories] = useState([])
 
     const [errorMessage, setErrorMessage] = useState(undefined)
