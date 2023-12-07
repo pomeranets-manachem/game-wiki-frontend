@@ -51,12 +51,24 @@ function GameEdit(props) {
                 navigate(`/game/${editedGame._id}`);
             })
             .catch((error) => {
-                console.log(error);
+                console.log("API: error while editing a game", error);
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
             });
     };
 
+    const handleDelete = (event) => {
+        gameService
+            .deleteGame(gameId)
+            .then((response) => {
+                navigate('/')
+            })
+            .catch((error) => {
+                console.log("API: error while deleting a game", error);
+                const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription);
+            })
+    };
 
     return (
         <div>
@@ -77,6 +89,9 @@ function GameEdit(props) {
 
                 <button type="submit">Save</button>
             </form>
+
+            <br />
+            <button onClick={handleDelete}>DELETE</button>
         </div>
     )
 }
