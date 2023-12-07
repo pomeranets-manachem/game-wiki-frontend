@@ -18,6 +18,9 @@ import GameEdit from "./pages/game/GameEdit"
 import GameList from "./pages/game/GameList"
 
 import CategoryList from "./pages/category/CategoryList"
+import CategoryCreate from "./pages/category/CategoryCreate"
+import CategoryDetails from "./pages/category/CategoryDetails"
+import CategoryEdit from "./pages/category/CategoryEdit"
 
 import Mockup from "./pages/Mockup"
 
@@ -44,6 +47,9 @@ function App() {
         <Route path="/games/edit/:gameId" element={<GameEdit />} />
 
         <Route path="/categories/" element={<CategoryList />} />
+        <Route path="/categories/create" element={<CategoryCreate />} />
+        <Route path="/categories/details/:categoryId" element={<CategoryDetails />} />
+        <Route path="/categories/edit/:categoryId" element={<CategoryEdit />} />
 
       </Routes>
 

@@ -43,14 +43,14 @@ function GameCreate(props) {
             <form onSubmit={handleSubmit}>
                 <h3>Create new game</h3>
 
-                <label htmlFor="name-input">Name</label>
-                <input type="text" id="name-input" value={gameName} onChange={handleGameName} />
+                <label htmlFor="game-name-input">Name</label>
+                <input type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
                 <br />
-                <label htmlFor="informations-input">Information</label>
-                <input type="text" id="informations-input" value={gameInformations} onChange={handleGameInformations} />
+                <label htmlFor="game-informations-input">Information</label>
+                <input type="text" id="game-informations-input" value={gameInformations} onChange={handleGameInformations} />
                 <br />
-                <label htmlFor="image-url-input">Image URL</label>
-                <input type="text" id="image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
+                <label htmlFor="game-image-url-input">Image URL</label>
+                <input type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
                 <br />
 
                 <button type="submit">Create game</button>
