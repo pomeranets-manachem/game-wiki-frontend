@@ -31,6 +31,14 @@ function CategoryDetails(props) {
                     <>
                         <li>Name: {category.name}</li>
                         <li>Description: {category.description}</li>
+                        <h2>Games in this category:</h2>
+                        <ul>
+                            {category.games && category.games.map((game) => {
+                                return (
+                                    <li key={game._id}>{game.name}</li>
+                                )
+                            })}
+                        </ul>
                     </>
                 }
             </ul>
