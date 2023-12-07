@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
 
-function CreateGame(props) {
+function GameCreate(props) {
     const [gameName, setGameName] = useState('');
     const [gameInformations, setGameInformations] = useState('');
     const [gameImageURL, setGameImageURL] = useState('');
@@ -60,4 +60,4 @@ function CreateGame(props) {
     )
 }
 
-export default CreateGame;
+export default GameCreate;
