@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import gameService from "../services/game.service";
+import categoryService from "../../services/category.service";
 
-function HomePage() {
-    const [games, setGames] = useState([]);
+function CategoryList() {
+    const [categories, setCategories] = useState([]);
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     useEffect(() => {
-        gameService
-            .getGamesList()
+        categoryService
+            .getCategoriesList()
             .then((response) => {
-                setGames(response.data);
+                setCategories(response.data);
             })
             .catch((error) => {
                 console.log("API: Error while getting the list of games")
@@ -22,33 +22,23 @@ function HomePage() {
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Home page</h1>
-
-            <Link to="/games/">
-                <button>All Games</button>
-            </Link>
-
-            <Link to="/categories/">
-                <button>All Categories</button>
-            </Link>
-
-
+            <h1>Categories list</h1>
             <ul>
-                {games && games.map((game) => {
+                {categories && categories.map((category) => {
                     return (
-                        <li key={game._id}>
-                            <Link to={`/games/details/${game._id}`}>
-                                {game.name}
+                        <li key={category._id}>
+                            <Link to={`/categories/details/${category._id}`}>
+                                {category.name}
                             </Link>
                         </li>
                     )
                 })}
             </ul>
-            <Link to="/games/create">
-                <button>Create game</button>
+            <Link to="/categories/create">
+                <button>Create category</button>
             </Link>
         </div>
     );
 }
 
-export default HomePage;
+export default CategoryList;
