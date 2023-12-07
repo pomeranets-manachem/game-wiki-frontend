@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import gameService from "../services/game.service";
 
 function HomePage() {
@@ -30,6 +31,9 @@ function HomePage() {
                     )
                 })}
             </ul>
+            <Link to="/game/create">
+                <button>Create game</button>
+            </Link>
         </div>
     );
 }
