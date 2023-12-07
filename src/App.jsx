@@ -12,7 +12,8 @@ import LoginPage from "./pages/auth/LoginPage";
 import Navbar from './components/Navbar';
 import HomePage from "./pages/HomePage";
 import GameCreate from "./pages/game/GameCreate";
-import GameDetail from "./pages/game/GameDetails";
+import GameDetails from "./pages/game/GameDetails";
+import GameEdit from "./pages/game/GameEdit"
 
 import Mockup from "./pages/Mockup"
 
@@ -56,7 +57,8 @@ function App() {
         />
 
         <Route path="/game/create" element={<GameCreate />} />
-        <Route path="/game/:gameId" element={<GameDetail />} />
+        <Route path="/game/:gameId" element={<GameDetails />} />
+        <Route path="/game/edit/:gameId" element={<GameEdit />} />
 
       </Routes>
 

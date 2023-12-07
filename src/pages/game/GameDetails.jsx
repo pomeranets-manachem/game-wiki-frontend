@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
 
-function GameDetail(props) {
+function GameDetails(props) {
     const [game, setGame] = useState()
 
     const [errorMessage, setErrorMessage] = useState(undefined)
@@ -35,8 +35,13 @@ function GameDetail(props) {
                     </>
                 }
             </ul>
+            {game &&
+                <Link to={`/game/edit/${game._id}`}>
+                    <button>Edit game</button>
+                </Link>
+            }
         </div>
     )
 }
 
-export default GameDetail;
+export default GameDetails;
