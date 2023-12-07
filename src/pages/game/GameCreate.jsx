@@ -28,7 +28,7 @@ function GameCreate(props) {
             .createGame(requestBody)
             .then((response) => {
                 const newGame = response.data;
-                navigate(`/game/${newGame._id}`);
+                navigate(`/games/details/${newGame._id}`);
             })
             .catch((error) => {
                 console.log(error);

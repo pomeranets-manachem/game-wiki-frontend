@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import gameService from "../services/game.service";
+import gameService from "../../services/game.service";
 
-function HomePage() {
+function GameList() {
     const [games, setGames] = useState([]);
     const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -22,13 +22,7 @@ function HomePage() {
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Home page</h1>
-            <h2>Games list</h2>
-
-            <Link to="/games/">
-                <button>All Games</button>
-            </Link>
-
+            <h1>Games list</h1>
             <ul>
                 {games && games.map((game) => {
                     return (
@@ -47,4 +41,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default GameList;

@@ -36,7 +36,7 @@ function GameDetails(props) {
                 }
             </ul>
             {game &&
-                <Link to={`/game/edit/${game._id}`}>
+                <Link to={`/games/edit/${game._id}`}>
                     <button>Edit game</button>
                 </Link>
             }

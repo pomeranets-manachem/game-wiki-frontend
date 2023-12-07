@@ -48,7 +48,7 @@ function GameEdit(props) {
             .editGame(gameId, requestBody)
             .then((response) => {
                 const editedGame = response.data;
-                navigate(`/game/${editedGame._id}`);
+                navigate(`/games/details/${editedGame._id}`);
             })
             .catch((error) => {
                 console.log("API: error while editing a game", error);
