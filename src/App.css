@@ -5,3 +5,8 @@
 .navbar a:hover {
   color: #333333;
 }
+
+.game-categories-select {
+  max-width: 40%;
+  color: #333333
+}

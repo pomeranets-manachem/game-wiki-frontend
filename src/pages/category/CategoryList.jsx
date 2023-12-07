@@ -13,7 +13,7 @@ function CategoryList() {
                 setCategories(response.data);
             })
             .catch((error) => {
-                console.log("API: Error while getting the list of games")
+                console.log("API: Error while getting the list of categories")
                 const errorDescription = error.response.data.message;
                 setErrorMessage(errorDescription);
             })
