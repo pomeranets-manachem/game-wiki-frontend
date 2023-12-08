@@ -10,3 +10,9 @@
   max-width: 40%;
   color: #333333
 }
+
+.comment-box {
+  border: 1px solid black;
+  background-color: grey;
+  margin : 20px 0
+}

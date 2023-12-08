@@ -32,6 +32,23 @@ function GameDetails(props) {
                         <li>Name: {game.name}</li>
                         <li>Information: {game.informations}</li>
                         <li>Image URL: {game.imageURL}</li>
+                        <h2>Comments</h2>
+                        {game.comments.length > 0 ? 
+                        <>
+                            {game.comments.map(comment => {
+                                return (
+                                    <div className="comment-box" key={comment._id}>
+                                        <div>{comment.author.username}</div>
+                                        <div>{comment.comment}</div>
+                                        <div>{comment.createdAt}</div>
+                                    </div>
+                                );
+                            })}
+                        </> :
+                        <>
+                            <p>No related comments...</p>
+                        </>
+                        }
                     </>
                 }
             </ul>
