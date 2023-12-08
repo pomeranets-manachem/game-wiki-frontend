@@ -37,7 +37,7 @@ function CategorySelect(props) {
                 < Select
                     className="game-categories-select"
                     options={categoriesOptions}
-                    value={props.selectedCategories}
+                    value={props.value}
                     onChange={props.onChange}
                     isMulti
                 />

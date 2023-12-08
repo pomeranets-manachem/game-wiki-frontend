@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
+import CategorySelect from "../../components/CategorySelect";
 
 function GameEdit(props) {
     const [game, setGame] = useState()
@@ -8,25 +9,43 @@ function GameEdit(props) {
     const [gameInformations, setGameInformations] = useState('');
     const [gameImageURL, setGameImageURL] = useState('');
 
+    const [selectedCategories, setSelectedCategories] = useState([])
+    const [previousCategories, setPreviousCategories] = useState([])
+
     const [errorMessage, setErrorMessage] = useState(undefined);
 
-    const navigate = useNavigate();
-
     const { gameId } = useParams();
+
+    const navigate = useNavigate();
 
     const handleGameName = (e) => setGameName(e.target.value);
     const handleGameInformations = (e) => setGameInformations(e.target.value);
     const handleGameImageURL = (e) => setGameImageURL(e.target.value);
 
+    function parseCategoriesToSelectedCategories(categoriesArray) {
+        let tempCategoriesArray = []
+        categoriesArray.forEach((category) => {
+            const categoryName = category.name;
+            const categoryId = category._id;
+            const option = { label: categoryName, value: categoryId };
+
+            tempCategoriesArray.push(option)
+        })
+        setSelectedCategories(tempCategoriesArray)
+    }
+
     useEffect(() => {
         gameService
-            .getGame(gameId)
+            .getGameAndCategories(gameId)
             .then((response) => {
-                const uneditedGame = response.data[0];
-                setGame(uneditedGame);
-                setGameName(uneditedGame.name);
-                setGameInformations(uneditedGame.informations);
-                setGameImageURL(uneditedGame.imageURL);
+                const { game, categories } = response.data;
+                let oldCategories = categories.map((category) => { return category._id });
+                setPreviousCategories(oldCategories)
+                setGame(game);
+                setGameName(game.name);
+                setGameInformations(game.informations);
+                setGameImageURL(game.imageURL);
+                parseCategoriesToSelectedCategories(categories)
             })
             .catch((error) => {
                 console.log("API: Error while getting the details of a game")
@@ -38,10 +57,18 @@ function GameEdit(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        let selectedIds = selectedCategories.map((category) => {
+            return (
+                category.value
+            )
+        })
+
         const requestBody = {
             name: gameName,
             informations: gameInformations,
-            imageURL: gameImageURL
+            imageURL: gameImageURL,
+            previousCategories: previousCategories,
+            updatedCategories: selectedIds
         }
 
         gameService
@@ -70,6 +97,10 @@ function GameEdit(props) {
             })
     };
 
+    const handleCategoriesSelect = (selectedValues) => {
+        setSelectedCategories(selectedValues);
+    };
+
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -86,6 +117,8 @@ function GameEdit(props) {
                 <label htmlFor="game-image-url-input">Image URL</label>
                 <input type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
                 <br />
+
+                <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
 
                 <button type="submit">Save</button>
             </form>

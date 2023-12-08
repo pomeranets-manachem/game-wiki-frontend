@@ -31,7 +31,7 @@ class GameService {
     return this.api.get(`/games/${gameId}`);
   };
 
-  getCategoriesForGame = async (gameId) => {
+  getGameAndCategories = async (gameId) => {
     return this.api.get(`/games/${gameId}/categories`);
   };
 
