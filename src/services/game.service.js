@@ -42,6 +42,11 @@ class GameService {
   deleteGame = async (gameId) => {
     return this.api.delete(`/games/${gameId}`)
   }
+
+  createComment = async (gameId,requestBody) => {
+    return this.api.post(`/games/${gameId}/comments`, requestBody);
+  };
+
 }
 
 const gameService = new GameService();
