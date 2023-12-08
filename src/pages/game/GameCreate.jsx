@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
-import categoryService from "../../services/category.service";
-import Select from 'react-select';
+import CategorySelect from "../../components/CategorySelect";
 
 function GameCreate(props) {
     const [gameName, setGameName] = useState('');
     const [gameInformations, setGameInformations] = useState('');
     const [gameImageURL, setGameImageURL] = useState('');
 
-    const [categoriesOptions, setCategoriesOptions] = useState([])
     const [selectedCategories, setSelectedCategories] = useState([])
+
 
     const [errorMessage, setErrorMessage] = useState(undefined)
 
@@ -20,38 +19,19 @@ function GameCreate(props) {
     const handleGameInformations = (e) => setGameInformations(e.target.value);
     const handleGameImageURL = (e) => setGameImageURL(e.target.value);
 
-    function parseCategoriesToOptions(categoriesArray) {
-        let tempCategoriesArray = []
-        categoriesArray.forEach((category) => {
-            const categoryName = category.name;
-            const categoryId = category._id;
-            const option = { label: categoryName, value: categoryId };
-
-            tempCategoriesArray.push(option)
-        })
-        setCategoriesOptions(tempCategoriesArray)
-    }
-
-    useEffect(() => {
-        categoryService
-            .getCategoriesList()
-            .then((response) => {
-                parseCategoriesToOptions(response.data);
-            })
-            .catch((error) => {
-                console.log("API: Error while getting the list of categories")
-                const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
-            })
-    }, [])
-
     const handleSubmit = (event) => {
         event.preventDefault();
+        let selectedIds = selectedCategories.map((category) => {
+            return (
+                category.value
+            )
+        })
 
         const requestBody = {
             name: gameName,
             informations: gameInformations,
-            imageURL: gameImageURL
+            imageURL: gameImageURL,
+            categories: selectedIds
         }
 
         gameService
@@ -71,8 +51,6 @@ function GameCreate(props) {
         setSelectedCategories(selectedValues);
     };
 
-
-
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -91,16 +69,7 @@ function GameCreate(props) {
 
                 <h1>Select component</h1>
 
-                {categoriesOptions.length > 0 ?
-                    < Select
-                        className="game-categories-select"
-                        options={categoriesOptions}
-                        value={selectedCategories}
-                        onChange={handleCategoriesSelect}
-                        isMulti
-                    />
-                    : ""
-                }
+                <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
 
                 <button type="submit">Create game</button>
             </form>
