@@ -6,42 +6,51 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="">
-      <Link to="/" className="">
-        Home
-      </Link>
-      <div className="" id="">
-        <ul className="">
-          {isLoggedIn && (
-            <>
-              <li className="">
-                <a className="" href="#" id="">{user && user.username}</a>
-                <div className="">
-                  <div className="">
-                    <Link to="/profile">
-                      Profile
-                    </Link>
-                  </div>
-                  <div className="">
-                    <a href="" onClick={logOutUser}>Logout</a>
-                  </div>
-                </div>
-              </li>
-            </>
-          )}
 
-          {!isLoggedIn && (
-            <li className="">
-              <>
-                <Link to="/login" className="">
-                  Login
+    <nav className="uk-navbar-container">
+      <div className="uk-container">
+        <div uk-navbar="true">
+          <div className="uk-navbar-left">
+            <ul className="uk-navbar-nav">
+              <li className="uk-active">
+                <Link to="/" className="">
+                  Home
                 </Link>
-              </>
-            </li>
-          )}
-        </ul >
+              </li>
+            </ul>
+          </div>
+          <div className="uk-navbar-right">
+            <ul className="uk-navbar-nav">
+              {!isLoggedIn && (
+                <li className="">
+                  <Link to="/login" className="">
+                    Login
+                  </Link>
+                </li>
+              )}
+
+              {isLoggedIn && (
+                <li>
+                  <a className="" href="#" id="" uk-icon="icon: user">{user && user.username}</a>
+                  <div className="uk-navbar-dropdown">
+                    <ul className="uk-nav uk-navbar-dropdown-nav">
+                      <li>
+                        <Link to="/profile">
+                          Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <a href="" onClick={logOutUser}>Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
-    </nav>
+    </nav >
   );
 }
 
