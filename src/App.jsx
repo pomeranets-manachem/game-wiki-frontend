@@ -1,5 +1,4 @@
 import './App.css'
-import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 
 import IsPrivate from "./components/IsPrivate/";
@@ -22,9 +21,6 @@ import CategoryCreate from "./pages/category/CategoryCreate"
 import CategoryDetails from "./pages/category/CategoryDetails"
 import CategoryEdit from "./pages/category/CategoryEdit"
 
-import Mockup from "./pages/Mockup"
-
-
 
 function App() {
   return (
@@ -39,14 +35,14 @@ function App() {
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
 
         <Route path="/games/" element={<GameList />} />
-        <Route path="/games/create" element={<GameCreate />} />
+        <Route path="/games/create" element={<IsPrivate><GameCreate /></IsPrivate>} />
         <Route path="/games/details/:gameId" element={<GameDetails />} />
-        <Route path="/games/edit/:gameId" element={<GameEdit />} />
+        <Route path="/games/edit/:gameId" element={<IsPrivate><GameEdit /></IsPrivate>} />
 
         <Route path="/categories/" element={<CategoryList />} />
-        <Route path="/categories/create" element={<CategoryCreate />} />
+        <Route path="/categories/create" element={<IsPrivate><CategoryCreate /></IsPrivate>} />
         <Route path="/categories/details/:categoryId" element={<CategoryDetails />} />
-        <Route path="/categories/edit/:categoryId" element={<CategoryEdit />} />
+        <Route path="/categories/edit/:categoryId" element={<IsPrivate><CategoryEdit /></IsPrivate>} />
 
       </Routes>
 
