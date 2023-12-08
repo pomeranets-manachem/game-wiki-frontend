@@ -6,23 +6,23 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-primary">
-      <Link to="/" className="navbar-brand">
+    <nav className="">
+      <Link to="/" className="">
         Home
       </Link>
-      <div className="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul className="navbar-nav ml-auto">
+      <div className="" id="">
+        <ul className="">
           {isLoggedIn && (
             <>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{user && user.username}</a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <div className="dropdown-item">
+              <li className="">
+                <a className="" href="#" id="">{user && user.username}</a>
+                <div className="">
+                  <div className="">
                     <Link to="/profile">
                       Profile
                     </Link>
                   </div>
-                  <div className="dropdown-item">
+                  <div className="">
                     <a href="" onClick={logOutUser}>Logout</a>
                   </div>
                 </div>
@@ -31,9 +31,9 @@ function Navbar() {
           )}
 
           {!isLoggedIn && (
-            <li className="nav-item">
+            <li className="">
               <>
-                <Link to="/login" className="nav-link">
+                <Link to="/login" className="">
                   Login
                 </Link>
               </>
