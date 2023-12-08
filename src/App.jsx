@@ -34,9 +34,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        {/* TODO: Delete Mockup when not used anymore */}
-        <Route path="/mockup" element={<Mockup />} />
-
         <Route path="/profile" element={<IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
