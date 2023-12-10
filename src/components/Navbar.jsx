@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
 
-    <nav className="uk-navbar-container">
+    <nav className="uk-navbar-container uk-margin-bottom">
       <div className="uk-container">
         <div uk-navbar="true">
           <div className="uk-navbar-left">
