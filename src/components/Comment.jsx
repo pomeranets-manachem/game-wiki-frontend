@@ -28,13 +28,35 @@ function Comment(props) {
       .catch((err) => console.log(err));
   };
 
+  const deleteComment = () => {
+    gameService
+        .deleteComment(props.gameId, props.comment._id)
+        .then(() => {
+            gameService
+              .getGame(props.gameId)
+              .then((response) => {
+                setIsEditCommentMode(false);
+                props.callbackToSetGame(response.data[0]);
+              })
+              .catch((error) => {
+                console.log("API: Error while getting the details of a game");
+                const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription);
+              });
+          })
+          .catch((err) => console.log(err));
+  }
+
   return !isEditCommentMode ? (
     <div className="comment-box" key={props.comment._id}>
       <div>{props.comment.author.username}</div>
       <div>{props.comment.comment}</div>
       <div>{props.comment.createdAt}</div>
       {props.user.username === props.comment.author.username ? (
-        <button onClick={() => setIsEditCommentMode(true)}>Edit</button>
+        <div>
+            <button onClick={() => setIsEditCommentMode(true)}>Edit</button>
+            <button onClick={() =>deleteComment()}>Delete</button>
+        </div>
       ) : (
         <></>
       )}

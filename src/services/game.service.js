@@ -51,6 +51,9 @@ class GameService {
     return this.api.put(`/games/${gameId}/comments/${commentId}`, requestBody)
   }
 
+  deleteComment = async (gameId, commentId) => {
+    return this.api.delete(`/games/${gameId}/comments/${commentId}`)
+  }
 }
 
 const gameService = new GameService();
