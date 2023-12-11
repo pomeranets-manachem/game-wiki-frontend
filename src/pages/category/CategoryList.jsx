@@ -11,6 +11,7 @@ function CategoryList() {
             .getCategoriesList()
             .then((response) => {
                 setCategories(response.data);
+                setFullCategoryList(response.data)
             })
             .catch((error) => {
                 console.log("API: Error while getting the list of categories")
@@ -19,10 +20,35 @@ function CategoryList() {
             })
     }, []);
 
+    const [fullCategoryList, setFullCategoryList] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleChange = (e) => {
+        setSearchQuery(e.target.value);
+        const filteredArray = fullCategoryList.filter((elm) => {
+          return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
+        });
+        if (e.target.value === "") {
+          setCategories(fullCategoryList)
+        } else {
+          setCategories(filteredArray);
+        }
+      };
+
     return (
         <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h1>Categories</h1>
+            <div>
+            <input
+                type="text"
+                name="searchQuery"
+                value={searchQuery}
+                onChange={handleChange}
+                placeholder="Search"
+              />
+            </div> 
+            
             <Link to="/categories/create">
                 <button className="uk-button uk-button-primary">Create category</button>
             </Link>
