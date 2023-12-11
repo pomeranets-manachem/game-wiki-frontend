@@ -24,7 +24,7 @@ function Comment(props) {
           .getGame(props.gameId)
           .then((response) => {
             setIsEditCommentMode(false);
-            props.callbackToSetGame(response.data[0]);
+            props.callbackToSetGame(response.data);
           })
           .catch((error) => {
             console.log("API: Error while getting the details of a game");
@@ -43,7 +43,7 @@ function Comment(props) {
           .getGame(props.gameId)
           .then((response) => {
             setIsEditCommentMode(false);
-            props.callbackToSetGame(response.data[0]);
+            props.callbackToSetGame(response.data);
           })
           .catch((error) => {
             console.log("API: Error while getting the details of a game");
