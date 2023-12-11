@@ -21,10 +21,8 @@ function CategoryList() {
     }, []);
 
     const [fullCategoryList, setFullCategoryList] = useState([]);
-    const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
-        setSearchQuery(e.target.value);
         const filteredArray = fullCategoryList.filter((elm) => {
             return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
         });
@@ -51,7 +49,6 @@ function CategoryList() {
                     className="uk-search-input"
                     type="text"
                     name="searchQuery"
-                    value={searchQuery}
                     onChange={handleChange}
                     placeholder="Search"
                 />
