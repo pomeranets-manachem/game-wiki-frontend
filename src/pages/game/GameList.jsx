@@ -21,10 +21,8 @@ function GameList() {
     }, []);
 
     const [fullGameList, setFullGameList] = useState([]);
-    const [searchQuery, setSearchQuery] = useState("");
 
     const handleChange = (e) => {
-        setSearchQuery(e.target.value);
         const filteredArray = fullGameList.filter((elm) => {
             return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
         });
@@ -50,7 +48,6 @@ function GameList() {
                     className="uk-search-input"
                     type="text"
                     name="searchQuery"
-                    value={searchQuery}
                     onChange={handleChange}
                     placeholder="Search"
                 />
