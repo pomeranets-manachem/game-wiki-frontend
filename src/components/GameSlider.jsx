@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import categoryService from "../services/category.service";
+import gameService from "../services/game.service";
 
 function CategorySlider(props) {
 
-    const [categories, setCategories] = useState([])
+    const [games, setGames] = useState([]);
 
     useEffect(() => {
-        categoryService
-            .getCategoriesList()
+        gameService
+            .getGamesList()
             .then((response) => {
-                setCategories(response.data.slice(0, 10));
+                setGames(response.data);
             })
             .catch((error) => {
-                console.log("API: Error while getting the list of games")
                 const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
+                console.log("API: Error while getting the list of games ", errorDescription)
             })
     }, []);
 
@@ -24,17 +23,16 @@ function CategorySlider(props) {
             <div className="uk-position-relative uk-visible-toggle uk-light uk-text-center category-slider" tabIndex="-1" uk-slider="true">
                 <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
 
-                    {categories && categories.map((category) => {
+                    {games && games.map((game) => {
                         return (
 
-                            <li key={category._id} >
-                                <Link to={`/categories/details/${category._id}`}>
+                            <li key={game._id} >
+                                <Link to={`/games/details/${game._id}`}>
                                     <div className="uk-card uk-card-default uk-card-body category-card">
                                         <h3 className="uk-card-title">
-
-                                            {category.name}
+                                            {game.name}
                                         </h3>
-                                        <p>{category.description}</p>
+                                        <p>{game.informations.substring(0, 20) + "..."}</p>
                                     </div>
                                 </Link>
                             </li>
@@ -42,6 +40,11 @@ function CategorySlider(props) {
 
                         )
                     })}
+
+
+
+
+
                 </ul>
 
                 <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="true" uk-slidenav-previous="true" uk-slider-item="previous"></a>

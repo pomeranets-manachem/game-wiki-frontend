@@ -18,12 +18,39 @@
 //     .uk-card a { color: #f00; }
 // }
 
+/*
+Color Palette
+*/
+
+@first-color: #27374D;
+@second-color: #526D82;
+@third-color: #9DB2BF;
+@fourth-color: #DDE6ED;
+
+
 #root,
 h1,
 h2,
-h3 {
+h3,
+p {
     font-family: 'Lato', sans-serif;
+    color: @fourth-color;
     /* font-family: 'Press Start 2P'; */
+}
+
+@global-link-color: white;
+
+.uk-button {
+    color: white;
+}
+
+.uk-button:hover {
+    color: @third-color;
+}
+
+.App {
+    height: 100vh;
+    background-color: @first-color;
 }
 
 .game-categories-select {
@@ -38,5 +65,27 @@ h3 {
 }
 
 .category-card {
-    background-color: lightsalmon;
+    border-radius: 1em;
+    background-color: @third-color;
+
+}
+
+.category-slider {
+    border-radius: 1em;
+    border: black solid 5px;
+}
+
+
+
+.homepage-categories {
+    padding-top: 1em;
+}
+
+.homepage-games {
+    padding-top: 5em;
+}
+
+#homepage-games-heading,
+#homepage-categories-heading {
+    margin-bottom: 1em;
 }

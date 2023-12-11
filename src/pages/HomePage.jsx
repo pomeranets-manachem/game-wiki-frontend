@@ -2,52 +2,42 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import gameService from "../services/game.service";
 import CategorySlider from "../components/CategorySlider";
+import GameSlider from "../components/GameSlider"
 
 function HomePage() {
-    const [games, setGames] = useState([]);
 
-    useEffect(() => {
-        gameService
-            .getGamesList()
-            .then((response) => {
-                setGames(response.data);
-            })
-            .catch((error) => {
-                const errorDescription = error.response.data.message;
-                console.log("API: Error while getting the list of games ", errorDescription)
-            })
-    }, []);
 
     return (
-        <div className="uk-container uk-text-center homepage">
+        <div className="uk-container homepage">
             <h1>Games Wiki</h1>
+            <div className="homepage-categories">
+                <div className="uk-grid uk-flex-between uk-flex-bottom">
+                    <h2 id="homepage-categories-heading">
+                        Categories
+                    </h2>
 
-            <CategorySlider></CategorySlider>
+                    <Link to="/categories/">
+                        Show more...
+                    </Link>
+                </div>
+                <CategorySlider></CategorySlider>
+            </div>
 
+            <div className="homepage-games">
+                <div className="uk-grid uk-flex-between uk-flex-bottom">
+                    <h2 id="homepage-games-heading">Games</h2>
+                    <Link to="/games/">
+                        Show more...
+                    </Link>
+                </div>
+                <GameSlider></GameSlider>
+            </div>
 
-            <Link to="/games/">
-                <button>All Games</button>
-            </Link>
-
-            <Link to="/categories/">
-                <button>All Categories</button>
-            </Link>
-
-
-            <ul className="uk-list">
-                {games && games.map((game) => {
-                    return (
-                        <li key={game._id}>
-                            <Link to={`/games/details/${game._id}`}>
-                                {game.name}
-                            </Link>
-                        </li>
-                    )
-                })}
-            </ul>
-            <Link to="/games/create">
-                <button>Create game</button>
-            </Link>
+            <div className="uk-text-right">
+                <Link to="/games/create">
+                    <button className="uk-button-icon" uk-icon="icon: plus-circle; ratio: 3"></button>
+                </Link>
+            </div>
         </div>
     );
 }
