@@ -33,7 +33,7 @@ function SignupPage() {
   return (
     <div className="uk-container SignupPage">
       <h1>Sign Up</h1>
-      <div className="form-container">
+      <div className="form-container uk-width-medium">
         <form onSubmit={handleSignupSubmit}>
           <div class="uk-margin">
             <label>Email:</label>

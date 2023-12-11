@@ -35,7 +35,7 @@ function LoginPage() {
   return (
     <div className="uk-container LoginPage">
       <h1>Login</h1>
-      <div className="form-container">
+      <div className="form-container uk-width-medium">
         <form onSubmit={handleLoginSubmit}>
           <div class="uk-margin">
             <label>Email:</label>

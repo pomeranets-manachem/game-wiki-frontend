@@ -20,24 +20,34 @@ function CategoryList() {
     }, []);
 
     return (
-        <div>
+        <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Categories list</h1>
-            <ul>
+            <h1>Categories</h1>
+            <Link to="/categories/create">
+                <button className="uk-button uk-button-primary">Create category</button>
+            </Link>
+
+            <div className="uk-grid uk-child-width-1-4@m">
                 {categories && categories.map((category) => {
                     return (
-                        <li key={category._id}>
+                        <div>
                             <Link to={`/categories/details/${category._id}`}>
-                                {category.name}
+                                <div key={category._id} className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card">
+                                    <div className="uk-card-header">
+                                        <h3 class="uk-card-title">{category.name}</h3>
+                                    </div>
+                                    <div className="uk-card-body">
+                                        {category.description}
+                                    </div>
+
+                                </div>
                             </Link>
-                        </li>
+                        </div>
                     )
                 })}
-            </ul>
-            <Link to="/categories/create">
-                <button>Create category</button>
-            </Link>
-        </div>
+            </div>
+
+        </div >
     );
 }
 
