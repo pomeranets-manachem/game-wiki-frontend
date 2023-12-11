@@ -57,14 +57,17 @@ function Comment(props) {
   return !isEditCommentMode ? (
     <article className="uk-comment uk-comment-primary">
       <header className="uk-comment-header">
-        <div className="">
-          <div className="uk-width-auto">
-            {/* <img class="uk-comment-avatar" src="images/avatar.jpg" width="80" height="80" alt=""> */}
-          </div>
-          <h4 className="uk-comment-title uk-margin-remove uk-align-left">
+        <div className="comment-avatar uk-align-left">
+          {props.user.image ?
+            <img class="uk-comment-avatar uk-border-circle" src={user.image} width="80" height="80" alt="" />
+            : ""
+          }
+          <h4 className="uk-comment-title uk-margin-remove ">
             @{props.comment.author.username}
           </h4>
-          <div className="uk-comment-meta uk-align-right">
+        </div>
+        <div className="uk-align-right">
+          <div className="uk-comment-meta">
             {commentUpdatedAt}
           </div>
         </div>
@@ -75,7 +78,9 @@ function Comment(props) {
       {props.user && props.user.username === props.comment.author.username ? (
         <div className="uk-align-right">
           <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => setIsEditCommentMode(true)}>Edit</button>
-          <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}><span className="uk-justify-center" uk-icon="trash"></span></button>
+          <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}>
+            <span uk-icon="icon: trash"></span>
+          </button>
         </div>
       ) : ""
       }
@@ -83,9 +88,10 @@ function Comment(props) {
   ) : (
     <>
       <div className="comment-box" key={props.comment._id}>
-        <div>{props.comment.author.username}</div>
+        <div>@{props.comment.author.username}</div>
         <form onSubmit={handleSubmit}>
           <input
+            className="uk-input"
             type="text"
             name="editedComment"
             value={editedComment}
@@ -94,9 +100,9 @@ function Comment(props) {
             }}
             size="100"
           ></input>
-          <button type="submit">Save</button>
+          <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Save</button>
         </form>
-        <div>{props.comment.updatedAt}</div>
+        <div>{commentUpdatedAt}</div>
       </div>
     </>
   );
