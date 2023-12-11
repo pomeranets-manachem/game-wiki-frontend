@@ -47,6 +47,10 @@ class GameService {
     return this.api.post(`/games/${gameId}/comments`, requestBody);
   };
 
+  editComment = async (gameId, commentId, requestBody) => {
+    return this.api.put(`/games/${gameId}/comments/${commentId}`, requestBody)
+  }
+
 }
 
 const gameService = new GameService();
