@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import Comment from "../../components/Comment";
 
 function GameDetails(props) {
     const [game, setGame] = useState()
@@ -73,11 +74,7 @@ function GameDetails(props) {
                         <>
                             {game.comments.map(comment => {
                                 return (
-                                    <div className="comment-box" key={comment._id}>
-                                        <div>{comment.author.username}</div>
-                                        <div>{comment.comment}</div>
-                                        <div>{comment.createdAt}</div>
-                                    </div>
+                                    <Comment key={comment._id} user={user} comment={comment} gameId = {gameId} callbackToSetGame={setGame}/>
                                 );
                             })}
                         </> :
