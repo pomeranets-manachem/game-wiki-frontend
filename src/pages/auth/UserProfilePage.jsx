@@ -4,12 +4,13 @@ import { AuthContext } from "../../context/auth.context";
 function ProfilePage() {
   const { user } = useContext(AuthContext);
   return (
-    <div>
+    <div className="uk-container">
       {user &&
         <>
-          <h1>Profile page</h1>
-          <p>{user.username}</p>
-          <p>{user.email}</p>
+          <h1>Profile</h1>
+
+          <p>Username: {user.username}</p>
+          <p>Email: {user.email}</p>
         </>
       }
     </div>

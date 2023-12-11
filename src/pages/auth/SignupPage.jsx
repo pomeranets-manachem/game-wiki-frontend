@@ -31,31 +31,39 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage">
+    <div className="uk-container SignupPage">
       <h1>Sign Up</h1>
+      <div className="form-container">
+        <form onSubmit={handleSignupSubmit}>
+          <div class="uk-margin">
+            <label>Email:</label>
+            <input className="uk-input" type="email" name="email" value={email} onChange={handleEmail} />
+          </div>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+          <div class="uk-margin">
+            <label>Password:</label>
+            <input
+              className="uk-input"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+            />
+          </div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <div class="uk-margin">
+            <label>Username:</label>
+            <input className="uk-input" type="text" name="name" value={username} onChange={handleUserName} />
+          </div>
 
-        <label>Name:</label>
-        <input type="text" name="name" value={username} onChange={handleUserName} />
+          <button type="submit" className="uk-button uk-button-primary">Sign Up</button>
+        </form>
 
-        <button type="submit">Sign Up</button>
-      </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <p>Already have account? <Link to={"/login"}> Login</Link></p>
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      </div>
     </div>
   );
 }
