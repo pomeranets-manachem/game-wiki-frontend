@@ -11,6 +11,7 @@ function GameList() {
             .getGamesList()
             .then((response) => {
                 setGames(response.data);
+                setFullGameList(response.data)
             })
             .catch((error) => {
                 console.log("API: Error while getting the list of games")
@@ -19,10 +20,32 @@ function GameList() {
             })
     }, []);
 
+    const [fullGameList, setFullGameList] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleChange = (e) => {
+        setSearchQuery(e.target.value);
+        const filteredArray = fullGameList.filter((elm) => {
+          return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
+        });
+        if (e.target.value === "") {
+          setGames(fullGameList)
+        } else {
+          setGames(filteredArray);
+        }
+      };
+
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h1>Games list</h1>
+            <input
+                type="text"
+                name="searchQuery"
+                value={searchQuery}
+                onChange={handleChange}
+                placeholder="Search"
+              />
             <ul>
                 {games && games.map((game) => {
                     return (
