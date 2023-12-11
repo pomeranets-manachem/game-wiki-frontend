@@ -52,28 +52,30 @@ function GameCreate(props) {
     };
 
     return (
-        <div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <form onSubmit={handleSubmit}>
-                <h3>Create new game</h3>
+        <div className="uk-container">
+            <div className="uk-width-large">
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                <form onSubmit={handleSubmit}>
+                    <h3>Create new game</h3>
+                    <div class="uk-margin">
+                        <label htmlFor="game-name-input">Name</label>
+                        <input className="uk-input" type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
+                    </div>
+                    <div class="uk-margin">
+                        <label htmlFor="game-informations-input">Information</label>
+                        {/* <input className="uk-input" type="text" id="game-informations-input" value={gameInformations} onChange={handleGameInformations} /> */}
+                        <textarea class="uk-textarea" id="game-informations-input" rows="5" value={gameInformations} onChange={handleGameInformations} ></textarea>
+                    </div>
+                    <div class="uk-margin">
+                        <label htmlFor="game-image-url-input">Image URL</label>
+                        <input className="uk-input" type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
+                    </div>
 
-                <label htmlFor="game-name-input">Name</label>
-                <input type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
-                <br />
-                <label htmlFor="game-informations-input">Information</label>
-                <input type="text" id="game-informations-input" value={gameInformations} onChange={handleGameInformations} />
-                <br />
-                <label htmlFor="game-image-url-input">Image URL</label>
-                <input type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
-                <br />
-
-                <h1>Select component</h1>
-
-                <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
-
-                <button type="submit">Create game</button>
-            </form>
-
+                    <h3>Select categories</h3>
+                    <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
+                    <button type="submit" className="uk-margin uk-button uk-button-primary">Create game</button>
+                </form>
+            </div>
         </div>
     )
 }

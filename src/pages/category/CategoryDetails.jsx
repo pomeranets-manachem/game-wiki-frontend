@@ -8,7 +8,6 @@ function CategoryDetails(props) {
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     const { categoryId } = useParams();
-
     useEffect(() => {
         categoryService
             .getCategory(categoryId)

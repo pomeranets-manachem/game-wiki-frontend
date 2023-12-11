@@ -25,21 +25,21 @@ function GameDetails(props) {
             })
     }, []);
 
-    const [comment,setComment] = useState("");
+    const [comment, setComment] = useState("");
     const { user } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const newComment = {
-            "comment" : comment,
-            "author" : user._id
+            "comment": comment,
+            "author": user._id
         }
 
         gameService
-            .createComment(gameId,{newComment})
-                .then(() => {
-                    gameService
+            .createComment(gameId, { newComment })
+            .then(() => {
+                gameService
                     .getGame(gameId)
                     .then((response) => {
                         setGame(response.data);
@@ -50,50 +50,60 @@ function GameDetails(props) {
                         const errorDescription = error.response.data.message;
                         setErrorMessage(errorDescription);
                     })
-                })
-                .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
 
-      }  
+    }
 
     return (
-        <div>
+        <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h1>Game Details</h1>
-            <ul>
+            <ul className="uk-list">
                 {game &&
                     <>
                         <li>Name: {game.name}</li>
-                        <li>Information: {game.informations}</li>
                         <li>Image URL: {game.imageURL}</li>
+                        <li>Game Information
+                            <div>
+                                <textarea className="uk-textarea" id="game-info-textarea" rows="10" value={game.informations} readOnly={true}></textarea>
+                            </div>
+                        </li>
+                        <div className="uk-margin">
+                            <Link to={`/games/edit/${game._id}`}>
+                                <button className="uk-margin uk-button uk-button-primary">Edit game</button>
+                            </Link>
+                        </div>
+
                         <h2>Comments</h2>
-                        {user ? 
-                            <form onSubmit={handleSubmit}>
-                                <input type ="text" name="comment" value = {comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
-                                <button type="submit">Add</button>
-                            </form> 
-                            :
-                            <Link to={"/login"}>Log in to comment !</Link>
-                        }
-                        {game.comments.length > 0 ? 
-                        <>
-                            {game.comments.map(comment => {
-                                return (
-                                    <Comment key={comment._id} user={user} comment={comment} gameId = {gameId} callbackToSetGame={setGame}/>
-                                );
-                            })}
-                        </> :
-                        <>
-                            <p>No related comments...</p>
-                        </>
-                        }
+
+                        <section className="comment-section">
+                            {user ?
+                                <form onSubmit={handleSubmit}>
+                                    <input className="uk-input" type="text" name="comment" value={comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
+                                    <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Add</button>
+                                </form>
+                                :
+                                <Link to={"/login"}>Log in to comment !</Link>
+                            }
+                            <div className="display-comments">
+                                {game.comments.length > 0 ?
+                                    <>
+                                        {game.comments.map(comment => {
+                                            return (
+                                                <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetGame={setGame} />
+                                            );
+                                        })}
+                                    </> :
+                                    <>
+                                        <p>No related comments...</p>
+                                    </>
+                                }
+                            </div>
+                        </section>
                     </>
                 }
             </ul>
-            {game &&
-                <Link to={`/games/edit/${game._id}`}>
-                    <button>Edit game</button>
-                </Link>
-            }
         </div>
     )
 }
