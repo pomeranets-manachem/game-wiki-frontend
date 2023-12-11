@@ -16,7 +16,7 @@ function GameDetails(props) {
         gameService
             .getGame(gameId)
             .then((response) => {
-                setGame(response.data[0]);
+                setGame(response.data);
             })
             .catch((error) => {
                 console.log("API: Error while getting the details of a game")
@@ -42,7 +42,7 @@ function GameDetails(props) {
                     gameService
                     .getGame(gameId)
                     .then((response) => {
-                        setGame(response.data[0]);
+                        setGame(response.data);
                         setComment("");
                     })
                     .catch((error) => {
