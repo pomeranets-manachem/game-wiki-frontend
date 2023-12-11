@@ -13,7 +13,7 @@ function CategoryDetails(props) {
         categoryService
             .getCategory(categoryId)
             .then((response) => {
-                setCategory(response.data[0]);
+                setCategory(response.data);
             })
             .catch((error) => {
                 console.log("API: Error while getting the details of a category")
