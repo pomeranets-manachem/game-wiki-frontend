@@ -52,7 +52,7 @@ function Comment(props) {
       <div>{props.comment.author.username}</div>
       <div>{props.comment.comment}</div>
       <div>{props.comment.createdAt}</div>
-      {props.user.username === props.comment.author.username ? (
+      {props.user && props.user.username === props.comment.author.username ? (
         <div>
             <button onClick={() => setIsEditCommentMode(true)}>Edit</button>
             <button onClick={() =>deleteComment()}>Delete</button>
