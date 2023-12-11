@@ -66,10 +66,14 @@ function GameDetails(props) {
                         <li>Information: {game.informations}</li>
                         <li>Image URL: {game.imageURL}</li>
                         <h2>Comments</h2>
-                        <form onSubmit={handleSubmit}>
-                            <input type ="text" name="comment" value = {comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
-                            <button type="submit">Add</button>
-                        </form>
+                        {user ? 
+                            <form onSubmit={handleSubmit}>
+                                <input type ="text" name="comment" value = {comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
+                                <button type="submit">Add</button>
+                            </form> 
+                            :
+                            <Link to={"/login"}>Log in to comment !</Link>
+                        }
                         {game.comments.length > 0 ? 
                         <>
                             {game.comments.map(comment => {
