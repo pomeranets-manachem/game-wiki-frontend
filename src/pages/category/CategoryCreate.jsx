@@ -36,22 +36,22 @@ function CategoryCreate(props) {
     };
 
     return (
-        <div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <form onSubmit={handleSubmit}>
-                <h3>Create new category</h3>
-
-                <label htmlFor="category-name-input">Name</label>
-                <input type="text" id="category-name-input" value={categoryName} onChange={handleCategoryName} />
-                <br />
-                <label htmlFor="category-informations-input">Information</label>
-                <input type="text" id="category-informations-input" value={categoryDescription} onChange={handleCategoryDescription} />
-                <br />
-                <br />
-
-                <button type="submit">Create category</button>
-            </form>
-
+        <div className="uk-container">
+            <div className="uk-width-medium">
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                <form onSubmit={handleSubmit}>
+                    <h3>Create new category</h3>
+                    <div class="uk-margin">
+                        <label htmlFor="category-name-input">Name</label>
+                        <input className="uk-input" type="text" id="category-name-input" value={categoryName} onChange={handleCategoryName} />
+                    </div>
+                    <div class="uk-margin">
+                        <label htmlFor="category-informations-input">Information</label>
+                        <input className="uk-input" type="text" id="category-informations-input" value={categoryDescription} onChange={handleCategoryDescription} />
+                    </div>
+                    <button type="submit" className="uk-button uk-button-primary">Create category</button>
+                </form>
+            </div>
         </div>
     )
 }

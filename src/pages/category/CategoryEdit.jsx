@@ -67,24 +67,26 @@ function CategoryEdit(props) {
     };
 
     return (
-        <div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <div className="uk-container">
+            <div className="uk-width-large">
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <form onSubmit={handleSubmit}>
-                <h3>Edit category</h3>
+                <form onSubmit={handleSubmit}>
+                    <h3>Edit category</h3>
+                    <div className="uk-margin">
+                        <label htmlFor="category-name-input">Name</label>
+                        <input type="text" id="category-name-input" className="uk-input" value={categoryName} onChange={handleCategoryName} />
+                    </div>
+                    <div className="uk-margin">
+                        <label htmlFor="category-informations-input">Description</label>
+                        <input type="text" id="category-informations-input" className="uk-input" value={categoryDescription} onChange={handleCategoryDescription} />
+                    </div>
+                    <button type="submit" className="uk-button uk-button-primary uk-align-right">Save</button>
+                </form>
 
-                <label htmlFor="category-name-input">Name</label>
-                <input type="text" id="category-name-input" value={categoryName} onChange={handleCategoryName} />
-                <br />
-                <label htmlFor="category-informations-input">Description</label>
-                <input type="text" id="category-informations-input" value={categoryDescription} onChange={handleCategoryDescription} />
-                <br />
 
-                <button type="submit">Save</button>
-            </form>
-
-            <br />
-            <button onClick={handleDelete}>DELETE</button>
+                <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
+            </div>
         </div>
     )
 }
