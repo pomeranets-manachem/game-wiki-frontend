@@ -96,7 +96,7 @@ function Comment(props) {
           ></input>
           <button type="submit">Save</button>
         </form>
-        <div>{props.comment.createdAt}</div>
+        <div>{props.comment.updatedAt}</div>
       </div>
     </>
   );
