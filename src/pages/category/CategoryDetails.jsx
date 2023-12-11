@@ -23,31 +23,27 @@ function CategoryDetails(props) {
     }, []);
 
     return (
-        <div>
+        <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Category Details</h1>
-            <ul>
-                {category &&
-                    <>
-                        <li>Name: {category.name}</li>
-                        <li>Description: {category.description}</li>
-                        <h2>Games in this category:</h2>
-                        <ul>
-                            {category.games && category.games.map((game) => {
-                                return (
-                                    <li key={game._id}>{game.name}</li>
-                                )
-                            })}
-                        </ul>
-                    </>
-                }
-            </ul>
             {category &&
-                <Link to={`/categories/edit/${category._id}`}>
-                    <button>Edit category</button>
-                </Link>
+                <>
+                    <h1>{category.name} Details</h1>
+                    <p>{category.description}</p>
+
+                    <Link to={`/categories/edit/${category._id}`}>
+                        <button className="uk-button uk-button-primary">Edit category</button>
+                    </Link>
+                    <h2>Games in this category:</h2>
+                    <ul>
+                        {category.games && category.games.map((game) => {
+                            return (
+                                <li key={game._id}>{game.name}</li>
+                            )
+                        })}
+                    </ul>
+                </>
             }
-        </div>
+        </div >
     )
 }
 
