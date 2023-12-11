@@ -64,18 +64,18 @@ function Comment(props) {
           <h4 className="uk-comment-title uk-margin-remove uk-align-left">
             @{props.comment.author.username}
           </h4>
-          <div className="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top uk-align-right">
+          <div className="uk-comment-meta uk-align-right">
             {commentUpdatedAt}
           </div>
         </div>
       </header>
       <div className="uk-comment-body">
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <p>{props.comment.comment}</p>
       </div>
       {props.user && props.user.username === props.comment.author.username ? (
-        <div>
-          <button className="uk-button uk-button-default uk-button-small" onClick={() => setIsEditCommentMode(true)}>Edit</button>
-          <button className="uk-button uk-button-default uk-button-small" onClick={() => deleteComment()}>Delete</button>
+        <div className="uk-align-right">
+          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => setIsEditCommentMode(true)}>Edit</button>
+          <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}><span className="uk-justify-center" uk-icon="trash"></span></button>
         </div>
       ) : ""
       }
