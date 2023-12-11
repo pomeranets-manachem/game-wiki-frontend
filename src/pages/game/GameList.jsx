@@ -26,40 +26,50 @@ function GameList() {
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
         const filteredArray = fullGameList.filter((elm) => {
-          return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
+            return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
         });
         if (e.target.value === "") {
-          setGames(fullGameList)
+            setGames(fullGameList)
         } else {
-          setGames(filteredArray);
+            setGames(filteredArray);
         }
-      };
+    };
 
     return (
-        <div>
+        <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Games list</h1>
-            <input
-                type="text"
-                name="searchQuery"
-                value={searchQuery}
-                onChange={handleChange}
-                placeholder="Search"
-              />
-            <ul>
+            <h1>Games</h1>
+            <div className="uk-align-right">
+                <Link to="/games/create">
+                    <button className="uk-button uk-button-primary">Create game</button>
+                </Link>
+            </div>
+            <form className="uk-search uk-search-default">
+                <span uk-search-icon="true"></span>
+                <input
+                    className="uk-search-input"
+                    type="text"
+                    name="searchQuery"
+                    value={searchQuery}
+                    onChange={handleChange}
+                    placeholder="Search"
+                />
+            </form>
+
+            <div className="uk-grid uk-child-width-1-4@m ">
                 {games && games.map((game) => {
                     return (
-                        <li key={game._id}>
-                            <Link to={`/games/details/${game._id}`}>
-                                {game.name}
-                            </Link>
-                        </li>
+                        <Link to={`/games/details/${game._id}`}>
+                            <div key={game._id} className="uk-margin-medium-top uk-card uk-card-hover uk-card-default uk-card-secondary category-card">
+                                <div className="uk-card-body">
+                                    {game.name}
+                                </div>
+                            </div>
+                        </Link>
                     )
                 })}
-            </ul>
-            <Link to="/games/create">
-                <button>Create game</button>
-            </Link>
+            </div>
+
         </div>
     );
 }

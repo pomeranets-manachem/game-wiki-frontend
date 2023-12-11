@@ -31,10 +31,12 @@ function CategorySlider(props) {
                                 <Link to={`/categories/details/${category._id}`}>
                                     <div className="uk-card uk-card-default uk-card-body category-card">
                                         <h3 className="uk-card-title">
-
                                             {category.name}
                                         </h3>
+
                                         <p>{category.description}</p>
+
+
                                     </div>
                                 </Link>
                             </li>

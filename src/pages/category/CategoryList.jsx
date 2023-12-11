@@ -26,32 +26,36 @@ function CategoryList() {
     const handleChange = (e) => {
         setSearchQuery(e.target.value);
         const filteredArray = fullCategoryList.filter((elm) => {
-          return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
+            return elm.name.toLowerCase().includes(e.target.value.toLowerCase());
         });
         if (e.target.value === "") {
-          setCategories(fullCategoryList)
+            setCategories(fullCategoryList)
         } else {
-          setCategories(filteredArray);
+            setCategories(filteredArray);
         }
-      };
+    };
 
     return (
         <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <h1>Categories</h1>
-            <div>
-            <input
-                type="text"
-                name="searchQuery"
-                value={searchQuery}
-                onChange={handleChange}
-                placeholder="Search"
-              />
-            </div> 
-            
-            <Link to="/categories/create">
-                <button className="uk-button uk-button-primary">Create category</button>
-            </Link>
+            <div className="uk-align-right">
+                <Link to="/categories/create">
+                    <button className="uk-button uk-button-primary">Create category</button>
+                </Link>
+            </div>
+
+            <form className="uk-search uk-search-default">
+                <span uk-search-icon="true"></span>
+                <input
+                    className="uk-search-input"
+                    type="text"
+                    name="searchQuery"
+                    value={searchQuery}
+                    onChange={handleChange}
+                    placeholder="Search"
+                />
+            </form>
 
             <div className="uk-grid uk-child-width-1-4@m">
                 {categories && categories.map((category) => {
