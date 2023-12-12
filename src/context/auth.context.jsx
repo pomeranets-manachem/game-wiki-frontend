@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-let API_URL = import.meta.env.VITE_SERVER_URL;
+let API_URL = `${import.meta.env.VITE_SERVER_URL}/auth`;
 
 const AuthContext = React.createContext();
 

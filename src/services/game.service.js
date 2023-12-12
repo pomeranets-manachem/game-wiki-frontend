@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let storedURL = import.meta.env.VITE_SERVER_URL;
+let storedURL = `${import.meta.env.VITE_SERVER_URL}/api`;
 
 class GameService {
   constructor() {
