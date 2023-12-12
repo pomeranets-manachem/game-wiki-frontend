@@ -1,21 +1,22 @@
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth.service";
+import queryString from "query-string"
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, isLoggedIn } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const requestBody = { email, password };
 
@@ -23,8 +24,8 @@ function LoginPage() {
       .login(requestBody)
       .then((response) => {
         storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/");
+        const { redirectTo } = queryString.parse(location.search);
+        authenticateUser(redirectTo);
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

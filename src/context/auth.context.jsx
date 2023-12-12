@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -10,12 +11,12 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [authError, setAuthError] = useState(null);
-
+  const navigate = useNavigate()
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
 
-  const authenticateUser = () => {
+  const authenticateUser = (url) => {
     const storedToken = localStorage.getItem("authToken");
 
     if (storedToken) {
@@ -28,6 +29,11 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
+          if (url) {
+            navigate(url)
+          } else {
+            navigate('/')
+          }
         })
         .catch((error) => {
           if (error) {
@@ -42,6 +48,7 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
+      return false
     }
   };
 

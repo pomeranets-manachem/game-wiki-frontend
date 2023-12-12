@@ -41,11 +41,11 @@ function CategoryCreate(props) {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <form onSubmit={handleSubmit}>
                     <h3>Create new category</h3>
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         <label htmlFor="category-name-input">Name</label>
                         <input className="uk-input" type="text" id="category-name-input" value={categoryName} onChange={handleCategoryName} />
                     </div>
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         <label htmlFor="category-informations-input">Information</label>
                         <input className="uk-input" type="text" id="category-informations-input" value={categoryDescription} onChange={handleCategoryDescription} />
                     </div>

@@ -33,6 +33,7 @@ function App() {
         <Route path="/profile" element={<IsPrivate> <ProfilePage /> </IsPrivate>} />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/games/" element={<GameList />} />
         <Route path="/games/create" element={<IsPrivate><GameCreate /></IsPrivate>} />
