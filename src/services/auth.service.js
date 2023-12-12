@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let storedURL = import.meta.env.REACT_APP_SERVER_URL;
+let storedURL = `${import.meta.env.VITE_SERVER_URL}/auth`;
 
 class AuthService {
   constructor() {
@@ -20,15 +20,15 @@ class AuthService {
   }
 
   login = (requestBody) => {
-    return this.api.post("/auth/login", requestBody);
+    return this.api.post("/login", requestBody);
   };
 
   signup = (requestBody) => {
-    return this.api.post("/auth/signup", requestBody);
+    return this.api.post("/signup", requestBody);
   };
 
   verify = () => {
-    return this.api.get("/auth/verify");
+    return this.api.get("/verify");
   };
 }
 
