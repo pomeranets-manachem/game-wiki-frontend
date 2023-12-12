@@ -19,6 +19,11 @@ function SignupPage() {
 
     const requestBody = { email, password, username };
 
+    if (username.length > 20) {
+      setErrorMessage("Username can't be over 20 characters");
+      return ;
+    }
+
     authService
       .signup(requestBody)
       .then((response) => {
