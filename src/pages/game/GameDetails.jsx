@@ -111,7 +111,7 @@ function GameDetails(props) {
                                     <>
                                         {comments.map(comment => {
                                             return (
-                                                <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetGame={setGame} />
+                                                <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetSorteredCommentsbyNewest={setSorteredCommentsbyNewest} />
                                             );
                                         })}
                                     </> :

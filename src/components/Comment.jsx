@@ -31,7 +31,7 @@ function Comment(props) {
           .getGame(props.gameId)
           .then((response) => {
             setIsEditCommentMode(false);
-            props.callbackToSetGame(response.data);
+            props.callbackToSetSorteredCommentsbyNewest(response.data.comments);
           })
           .catch((error) => {
             console.log("API: Error while getting the details of a game");
