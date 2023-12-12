@@ -13,12 +13,24 @@ function Comment(props) {
   }, [])
 
   const handleSubmit = (e) => {
-    
+    e.preventDefault();
+
     const updatedComment = editedComment;
 
     gameService
       .editComment(props.gameId, props.comment._id, { updatedComment })
       .then(() => {
+        gameService
+          .getGame(props.gameId)
+          .then((response) => {
+            setIsEditCommentMode(false);
+            props.callbackToSetSorteredCommentsbyNewest(response.data.comments);
+          })
+          .catch((error) => {
+            console.log("API: Error while getting the details of a game");
+            const errorDescription = error.response.data.message;
+            setErrorMessage(errorDescription);
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -30,7 +42,6 @@ function Comment(props) {
         gameService
           .getGame(props.gameId)
           .then((response) => {
-            setIsEditCommentMode(false);
             props.callbackToSetSorteredCommentsbyNewest(response.data.comments);
           })
           .catch((error) => {
