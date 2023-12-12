@@ -42,18 +42,17 @@ function GameDetails(props) {
             .createComment(gameId, { newComment })
             .then(() => {
                 gameService
-                    .getGameAndCategories(gameId)
-                    .then((response) => {
-                        setGame(response.data);
-                        setComment("");
-                    })
-                    .catch((error) => {
-                        console.log("API: Error while getting the details of a game")
-                        const errorDescription = error.response.data.message;
-                        setErrorMessage(errorDescription);
-                    })
-            })
-            .catch(err => console.log(err))
+                  .getGame(gameId)
+                  .then((response) => {
+                    setGame(response.data);
+                  })
+                  .catch((error) => {
+                    console.log("API: Error while getting the details of a game");
+                    const errorDescription = error.response.data.message;
+                    setErrorMessage(errorDescription);
+                  });
+              })
+              .catch((err) => console.log(err));
 
     }
 
