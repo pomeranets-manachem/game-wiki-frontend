@@ -61,7 +61,11 @@ function Comment(props) {
       </div>
       {props.user && props.user.username === props.comment.author.username ? (
         <div className="uk-align-right">
-          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => setIsEditCommentMode(true)}>Edit</button>
+          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => { 
+           setEditedComment(props.comment.comment)
+            setIsEditCommentMode(true)
+          }}
+            >Edit</button>
           <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}>
             <span uk-icon="icon: trash"></span>
           </button>
@@ -85,6 +89,7 @@ function Comment(props) {
             size="100"
           ></input>
           <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Save</button>
+          <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit" onClick={() => setIsEditCommentMode(false)}>Cancel</button>
         </form>
         <div>{commentUpdatedAt}</div>
       </div>
