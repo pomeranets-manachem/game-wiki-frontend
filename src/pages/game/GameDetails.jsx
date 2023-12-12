@@ -102,7 +102,7 @@ function GameDetails(props) {
                                 <Link to={"/login"}>Log in to comment !</Link>
                             }
                             <div className="display-comments">
-                                {game.comments.length > 0 ?
+                                {game.comments && game.comments.length > 0 ?
                                     <>
                                         {game.comments.map(comment => {
                                             return (
