@@ -7,6 +7,7 @@ import Comment from "../../components/Comment";
 
 function GameDetails(props) {
     const [game, setGame] = useState()
+    const [categories, setCategories] = useState([])
 
     const [errorMessage, setErrorMessage] = useState(undefined)
 
@@ -14,9 +15,10 @@ function GameDetails(props) {
 
     useEffect(() => {
         gameService
-            .getGame(gameId)
+            .getGameAndCategories(gameId)
             .then((response) => {
-                setGame(response.data);
+                setGame(response.data.game);
+                setCategories(response.data.categories)
             })
             .catch((error) => {
                 console.log("API: Error while getting the details of a game")
@@ -40,7 +42,7 @@ function GameDetails(props) {
             .createComment(gameId, { newComment })
             .then(() => {
                 gameService
-                    .getGame(gameId)
+                    .getGameAndCategories(gameId)
                     .then((response) => {
                         setGame(response.data);
                         setComment("");
@@ -69,6 +71,19 @@ function GameDetails(props) {
                                 <textarea className="uk-textarea" id="game-info-textarea" rows="10" value={game.informations} readOnly={true}></textarea>
                             </div>
                         </li>
+
+                        <li> Categories
+                            <div className="uk-flex uk-flex-wrap">
+                                {categories && categories.map((category) => {
+                                    return (
+                                        <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                            {category.name}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </li>
+
                         <div className="uk-margin">
                             <Link to={`/games/edit/${game._id}`}>
                                 <button className="uk-margin uk-button uk-button-primary">Edit game</button>
