@@ -8,7 +8,7 @@ import Comment from "../../components/Comment";
 function GameDetails(props) {
     const [game, setGame] = useState()
     const [categories, setCategories] = useState([])
-
+    const [comments, setComments] = useState(null);
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     const { gameId } = useParams();
@@ -19,13 +19,19 @@ function GameDetails(props) {
             .then((response) => {
                 setGame(response.data.game);
                 setCategories(response.data.categories)
+                setSorteredCommentsbyNewest(response.data.game.comments)
             })
             .catch((error) => {
                 console.log("API: Error while getting the details of a game")
-                const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription);
+                // const errorDescription = error.response.data.message;
+                // setErrorMessage(errorDescription);
             })
     }, []);
+
+    const setSorteredCommentsbyNewest = (arr) => {
+        let sorteredCommentsArr = arr.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        setComments(sorteredCommentsArr);
+    }
 
     const [comment, setComment] = useState("");
     const { user } = useContext(AuthContext);
@@ -101,9 +107,9 @@ function GameDetails(props) {
                                 <Link to={"/login"}>Log in to comment !</Link>
                             }
                             <div className="display-comments">
-                                {game.comments && game.comments.length > 0 ?
+                                {comments && comments.length > 0 ?
                                     <>
-                                        {game.comments.map(comment => {
+                                        {comments.map(comment => {
                                             return (
                                                 <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetGame={setGame} />
                                             );
