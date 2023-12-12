@@ -102,29 +102,32 @@ function GameEdit(props) {
     };
 
     return (
-        <div>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <div className="uk-container">
+            <div className="uk-width-large">
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-            <form onSubmit={handleSubmit}>
-                <h3>Edit game</h3>
-
-                <label htmlFor="game-name-input">Name</label>
-                <input type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
-                <br />
-                <label htmlFor="game-informations-input">Information</label>
-                <input type="text" id="game-informations-input" value={gameInformations} onChange={handleGameInformations} />
-                <br />
-                <label htmlFor="game-image-url-input">Image URL</label>
-                <input type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
-                <br />
-
-                <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
-
-                <button type="submit">Save</button>
-            </form>
-
-            <br />
-            <button onClick={handleDelete}>DELETE</button>
+                <form onSubmit={handleSubmit}>
+                    <h3>Edit game</h3>
+                    <div className="uk-margin">
+                        <label htmlFor="game-name-input">Name</label>
+                        <input className="uk-input" type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
+                    </div>
+                    <div className="uk-margin">
+                        <label htmlFor="game-informations-input">Information</label>
+                        <textarea className="uk-textarea" id="game-informations-input" rows="5" value={gameInformations} onChange={handleGameInformations} ></textarea>
+                    </div>
+                    <div className="uk-margin">
+                        <label htmlFor="game-image-url-input">Image URL</label>
+                        <input className="uk-input" type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
+                    </div>
+                    <div className="uk-margin">
+                        <h3>Select categories</h3>
+                        <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
+                        <button type="submit" className="uk-margin uk-button uk-button-primary uk-align-right">Save</button>
+                    </div>
+                </form>
+                <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
+            </div>
         </div>
     )
 }

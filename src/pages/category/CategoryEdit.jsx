@@ -20,7 +20,7 @@ function CategoryEdit(props) {
         categoryService
             .getCategory(categoryId)
             .then((response) => {
-                const uneditedCategory = response.data[0];
+                const uneditedCategory = response.data;
                 setCategory(uneditedCategory);
                 setCategoryName(uneditedCategory.name);
                 setCategoryDescription(uneditedCategory.description);
@@ -83,8 +83,6 @@ function CategoryEdit(props) {
                     </div>
                     <button type="submit" className="uk-button uk-button-primary uk-align-right">Save</button>
                 </form>
-
-
                 <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
             </div>
         </div>

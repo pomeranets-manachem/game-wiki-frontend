@@ -57,16 +57,15 @@ function GameCreate(props) {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <form onSubmit={handleSubmit}>
                     <h3>Create new game</h3>
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         <label htmlFor="game-name-input">Name</label>
                         <input className="uk-input" type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
                     </div>
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         <label htmlFor="game-informations-input">Information</label>
-                        {/* <input className="uk-input" type="text" id="game-informations-input" value={gameInformations} onChange={handleGameInformations} /> */}
-                        <textarea class="uk-textarea" id="game-informations-input" rows="5" value={gameInformations} onChange={handleGameInformations} ></textarea>
+                        <textarea className="uk-textarea" id="game-informations-input" rows="5" value={gameInformations} onChange={handleGameInformations} ></textarea>
                     </div>
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         <label htmlFor="game-image-url-input">Image URL</label>
                         <input className="uk-input" type="text" id="game-image-url-input" value={gameImageURL} onChange={handleGameImageURL} />
                     </div>
