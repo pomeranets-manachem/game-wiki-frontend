@@ -50,7 +50,7 @@ function GameDetails(props) {
                 gameService
                   .getGame(gameId)
                   .then((response) => {
-                    setGame(response.data);
+                    setSorteredCommentsbyNewest(response.data.comments)
                   })
                   .catch((error) => {
                     console.log("API: Error while getting the details of a game");
