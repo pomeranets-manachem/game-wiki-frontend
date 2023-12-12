@@ -58,10 +58,6 @@ function Comment(props) {
     <article className="uk-comment uk-comment-primary">
       <header className="uk-comment-header">
         <div className="comment-avatar uk-align-left">
-          {props.user.image ?
-            <img class="uk-comment-avatar uk-border-circle" src={user.image} width="80" height="80" alt="" />
-            : ""
-          }
           <h4 className="uk-comment-title uk-margin-remove ">
             @{props.comment.author.username}
           </h4>
