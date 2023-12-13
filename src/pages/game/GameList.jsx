@@ -51,7 +51,7 @@ function GameList() {
     };
 
     const checkArray2IncludesArray1 = (array1, array2) => {
-        return array1.every((item) => array2.includes(item));
+        return array1.filter((item) => array2.includes(item));
     }
 
     const handleFilter = (event) => {
@@ -67,11 +67,12 @@ function GameList() {
     }
 
     useEffect(() => {
+        console.log("Selected Categories: ", selectedCategories)
         if (fullGameList.length > 0) {
             const filteredArray = fullGameList.filter((game) => {
                 let gameCategoriesIds = game.categories.map((category) => category._id)
-
-                if (checkArray2IncludesArray1(gameCategoriesIds, selectedCategories)) return true;
+                let compareResult = checkArray2IncludesArray1(gameCategoriesIds, selectedCategories)
+                if (compareResult.length > 0) return true;
                 else return false;
             });
             console.log("Filtered Array ", filteredArray)
