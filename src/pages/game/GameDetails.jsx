@@ -99,9 +99,11 @@ function GameDetails(props) {
                                     <div className="uk-flex uk-flex-wrap">
                                         {categories && categories.map((category) => {
                                             return (
-                                                <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
-                                                    {category.name}
-                                                </div>
+                                                <Link to={`/categories/details/${category._id}`}>
+                                                    <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                                        {category.name}
+                                                    </div>
+                                                </Link>
                                             )
                                         })}
                                     </div>
@@ -146,8 +148,8 @@ function GameDetails(props) {
                         </section>
                     </>
                 }
-            </ul>
-        </div>
+            </ul >
+        </div >
     )
 }
 
