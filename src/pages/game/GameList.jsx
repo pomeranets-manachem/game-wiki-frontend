@@ -129,13 +129,16 @@ function GameList() {
                 </div>
 
                 <div className="uk-width-expand">
-                    <div className="uk-grid uk-child-width-1-4@m ">
+                    <div className="uk-grid uk-child-width-1-4@m" uk-grid="masonry: pack">
                         {games && games.map((game) => {
                             return (
                                 <Link to={`/games/details/${game._id}`} key={game._id}>
-                                    <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-default uk-card-secondary category-card">
-                                        <div className="uk-card-body">
-                                            {game.name}
+                                    <div class="uk-card uk-card-default category-card">
+                                        <div class="uk-card-media-top">
+                                            {game.imageURL && <img src={`${game.imageURL}`} width="1800" height="1200" alt="" className="game-card-image" />}
+                                        </div>
+                                        <div class="uk-card-body">
+                                            <h3 class="uk-card-title">{game.name}</h3>
                                         </div>
                                     </div>
                                 </Link>
