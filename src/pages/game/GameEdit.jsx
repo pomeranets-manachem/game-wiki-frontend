@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import gameService from "../../services/game.service";
 import CategorySelect from "../../components/CategorySelect";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function GameEdit(props) {
     const [game, setGame] = useState()
@@ -101,9 +103,14 @@ function GameEdit(props) {
         setSelectedCategories(selectedValues);
     };
 
+    const handleEditorChange = (event, editor) => {
+        const data = editor.getData();
+        setGameInformations(data);
+    };
+
     return (
         <div className="uk-container">
-            <div className="uk-width-large">
+            <div className="uk-grid-large">
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
 
                 <form onSubmit={handleSubmit}>
@@ -112,9 +119,14 @@ function GameEdit(props) {
                         <label htmlFor="game-name-input">Name</label>
                         <input className="uk-input" type="text" id="game-name-input" value={gameName} onChange={handleGameName} />
                     </div>
-                    <div className="uk-margin">
-                        <label htmlFor="game-informations-input">Information</label>
-                        <textarea className="uk-textarea" id="game-informations-input" rows="5" value={gameInformations} onChange={handleGameInformations} ></textarea>
+                    <div className="">
+                        <div className="ckeditor">
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data={gameInformations}
+                                onChange={handleEditorChange}
+                            />
+                        </div>
                     </div>
                     <div className="uk-margin">
                         <label htmlFor="game-image-url-input">Image URL</label>
@@ -125,8 +137,9 @@ function GameEdit(props) {
                         <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
                         <button type="submit" className="uk-margin uk-button uk-button-primary uk-align-right">Save</button>
                     </div>
+                    <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
                 </form>
-                <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
+
             </div>
         </div>
     )

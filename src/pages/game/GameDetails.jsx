@@ -4,6 +4,8 @@ import gameService from "../../services/game.service";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import Comment from "../../components/Comment";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function GameDetails(props) {
     const [game, setGame] = useState()
@@ -79,7 +81,16 @@ function GameDetails(props) {
                             <div className="">
                                 <li>Game Information
                                     <div>
-                                        <textarea className="uk-textarea" id="game-info-textarea" rows="10" value={game.informations} readOnly={true}></textarea>
+                                        <div className="ckeditor">
+                                            <CKEditor
+                                                editor={ClassicEditor}
+                                                data={game.informations}
+                                                config={{
+                                                    toolbar: []
+                                                }}
+                                                disabled
+                                            />
+                                        </div>
                                     </div>
                                 </li>
 
