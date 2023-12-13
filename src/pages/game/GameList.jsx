@@ -67,7 +67,6 @@ function GameList() {
     }
 
     useEffect(() => {
-        console.log("Selected Categories: ", selectedCategories)
         if (fullGameList.length > 0) {
             const filteredArray = fullGameList.filter((game) => {
                 let gameCategoriesIds = game.categories.map((category) => category._id)
@@ -75,8 +74,6 @@ function GameList() {
                 if (compareResult.length > 0) return true;
                 else return false;
             });
-            console.log("Filtered Array ", filteredArray)
-
             if (selectedCategories.length == 0) {
                 setGames(fullGameList)
             } else {
