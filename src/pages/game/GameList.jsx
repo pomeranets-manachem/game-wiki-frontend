@@ -134,7 +134,7 @@ function GameList() {
                             return (
                                 <Link to={`/games/details/${game._id}`} key={game._id}>
                                     <div className="uk-card uk-card-default category-card">
-                                        <div classclassName="uk-card-media-top">
+                                        <div className="uk-card-media-top">
                                             {game.imageURL && <img src={`${game.imageURL}`} width="1800" height="1200" alt="" className="game-card-image" />}
                                         </div>
                                         <div className="uk-card-body">
