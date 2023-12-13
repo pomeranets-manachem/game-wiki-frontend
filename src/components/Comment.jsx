@@ -13,12 +13,24 @@ function Comment(props) {
   }, [])
 
   const handleSubmit = (e) => {
-    
+    e.preventDefault();
+
     const updatedComment = editedComment;
 
     gameService
       .editComment(props.gameId, props.comment._id, { updatedComment })
       .then(() => {
+        gameService
+          .getGame(props.gameId)
+          .then((response) => {
+            setIsEditCommentMode(false);
+            props.callbackToSetSorteredCommentsbyNewest(response.data.comments);
+          })
+          .catch((error) => {
+            console.log("API: Error while getting the details of a game");
+            const errorDescription = error.response.data.message;
+            setErrorMessage(errorDescription);
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -30,8 +42,7 @@ function Comment(props) {
         gameService
           .getGame(props.gameId)
           .then((response) => {
-            setIsEditCommentMode(false);
-            props.callbackToSetGame(response.data);
+            props.callbackToSetSorteredCommentsbyNewest(response.data.comments);
           })
           .catch((error) => {
             console.log("API: Error while getting the details of a game");
@@ -61,7 +72,11 @@ function Comment(props) {
       </div>
       {props.user && props.user.username === props.comment.author.username ? (
         <div className="uk-align-right">
-          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => setIsEditCommentMode(true)}>Edit</button>
+          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => { 
+           setEditedComment(props.comment.comment)
+            setIsEditCommentMode(true)
+          }}
+            >Edit</button>
           <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}>
             <span uk-icon="icon: trash"></span>
           </button>
@@ -85,6 +100,7 @@ function Comment(props) {
             size="100"
           ></input>
           <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Save</button>
+          <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit" onClick={() => setIsEditCommentMode(false)}>Cancel</button>
         </form>
         <div>{commentUpdatedAt}</div>
       </div>
