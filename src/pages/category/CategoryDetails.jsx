@@ -51,19 +51,24 @@ function CategoryDetails(props) {
                     </Link>
                     <h2>Games in this category:</h2>
                     <form className="uk-search uk-search-default">
-                <span uk-search-icon="true"></span>
-                <input
-                    className="uk-search-input"
-                    type="text"
-                    name="searchQuery"
-                    onChange={handleChange}
-                    placeholder="Search"
-                />
-            </form>
-                    <ul>
+                        <span uk-search-icon="true"></span>
+                        <input
+                            className="uk-search-input"
+                            type="text"
+                            name="searchQuery"
+                            onChange={handleChange}
+                            placeholder="Search"
+                        />
+                    </form>
+                    <ul className="uk-list">
                         {relatedGames && relatedGames.map((game) => {
                             return (
-                                <li key={game._id}>{game.name}</li>
+
+                                <li key={game._id}>
+                                    <Link to={`/games/details/${game._id}`}>
+                                        {game.name}
+                                    </Link>
+                                </li>
                             )
                         })}
                     </ul>
