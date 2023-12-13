@@ -36,7 +36,7 @@ function HomePage() {
 
                 <div className="uk-text-right">
                     <Link to="/games/create">
-                        <button className="uk-button-icon" uk-icon="icon: plus-circle; ratio: 3"></button>
+                        <button type="submit" className="uk-margin uk-button uk-button-primary">Create game</button>
                     </Link>
                 </div>
             </div>
