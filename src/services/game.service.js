@@ -27,6 +27,10 @@ class GameService {
     return this.api.get("/games");
   };
 
+  getGamesListWithCategories = async () => {
+    return this.api.get("/gamesWithCategories");
+  }
+
   getGame = async (gameId) => {
     return this.api.get(`/games/${gameId}`);
   };
@@ -43,7 +47,7 @@ class GameService {
     return this.api.delete(`/games/${gameId}`)
   }
 
-  createComment = async (gameId,requestBody) => {
+  createComment = async (gameId, requestBody) => {
     return this.api.post(`/games/${gameId}/comments`, requestBody);
   };
 
