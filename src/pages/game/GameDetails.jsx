@@ -48,53 +48,65 @@ function GameDetails(props) {
             .createComment(gameId, { newComment })
             .then(() => {
                 gameService
-                  .getGame(gameId)
-                  .then((response) => {
-                    setSorteredCommentsbyNewest(response.data.comments)
-                  })
-                  .catch((error) => {
-                    console.log("API: Error while getting the details of a game");
-                    const errorDescription = error.response.data.message;
-                    setErrorMessage(errorDescription);
-                  });
-              })
-              .catch((err) => console.log(err));
+                    .getGame(gameId)
+                    .then((response) => {
+                        setSorteredCommentsbyNewest(response.data.comments)
+                    })
+                    .catch((error) => {
+                        console.log("API: Error while getting the details of a game");
+                        const errorDescription = error.response.data.message;
+                        setErrorMessage(errorDescription);
+                    });
+            })
+            .catch((err) => console.log(err));
 
     }
 
     return (
         <div className="uk-container">
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>Game Details</h1>
+            <h1>{game && game.name}</h1>
+
             <ul className="uk-list">
                 {game &&
                     <>
-                        <li>Name: {game.name}</li>
-                        <li>Image URL: {game.imageURL}</li>
-                        <li>Game Information
+                        <div className="uk-grid-large">
                             <div>
-                                <textarea className="uk-textarea" id="game-info-textarea" rows="10" value={game.informations} readOnly={true}></textarea>
+                                {game.imageURL ?
+                                    <img src={game.imageURL} alt="" className="game-detail-image uk-align-right" />
+                                    : ""}
                             </div>
-                        </li>
+                            <div className="">
+                                <li>Game Information
+                                    <div>
+                                        <textarea className="uk-textarea" id="game-info-textarea" rows="10" value={game.informations} readOnly={true}></textarea>
+                                    </div>
+                                </li>
 
-                        <li> Categories
-                            <div className="uk-flex uk-flex-wrap">
-                                {categories && categories.map((category) => {
-                                    return (
-                                        <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
-                                            {category.name}
-                                        </div>
-                                    )
-                                })}
+
+                                <li>
+                                    <div className="uk-flex uk-flex-wrap">
+                                        {categories && categories.map((category) => {
+                                            return (
+                                                <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                                    {category.name}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </li>
+
+                                <div className="uk-margin">
+                                    <Link to={`/games/edit/${game._id}`}>
+                                        <button className="uk-margin uk-button uk-button-primary">Edit game</button>
+                                    </Link>
+                                </div>
                             </div>
-                        </li>
 
-                        <div className="uk-margin">
-                            <Link to={`/games/edit/${game._id}`}>
-                                <button className="uk-margin uk-button uk-button-primary">Edit game</button>
-                            </Link>
+
+
+
                         </div>
-
                         <h2>Comments</h2>
 
                         <section className="comment-section">

@@ -133,12 +133,12 @@ function GameList() {
                         {games && games.map((game) => {
                             return (
                                 <Link to={`/games/details/${game._id}`} key={game._id}>
-                                    <div class="uk-card uk-card-default category-card">
-                                        <div class="uk-card-media-top">
+                                    <div className="uk-card uk-card-default category-card">
+                                        <div classclassName="uk-card-media-top">
                                             {game.imageURL && <img src={`${game.imageURL}`} width="1800" height="1200" alt="" className="game-card-image" />}
                                         </div>
-                                        <div class="uk-card-body">
-                                            <h3 class="uk-card-title">{game.name}</h3>
+                                        <div className="uk-card-body">
+                                            <h3 className="uk-card-title">{game.name}</h3>
                                         </div>
                                     </div>
                                 </Link>
