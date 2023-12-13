@@ -34,7 +34,7 @@ function CategorySlider(props) {
                                             {category.name}
                                         </h3>
 
-                                        <p>{category.description}</p>
+                                        <p>{category.description.substring(0, 20) + "..."}</p>
 
 
                                     </div>
