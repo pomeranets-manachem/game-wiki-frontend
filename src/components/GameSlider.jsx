@@ -29,9 +29,12 @@ function CategorySlider(props) {
                             <li key={game._id} >
                                 <Link to={`/games/details/${game._id}`}>
                                     <div className="uk-card uk-card-default uk-card-body category-card homePage-game-slider-game-card">
+                                        <img className="homePage-gameSlider-card-image" src={game.imageURL}/>
+                                        <div className="homePage-gameSlider-card-name">
                                         <h3 className="uk-card-title">
                                             {game.name}
                                         </h3>
+                                        </div> 
                                     </div>
                                 </Link>
                             </li>
