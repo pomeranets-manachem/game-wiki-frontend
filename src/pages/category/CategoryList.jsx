@@ -57,14 +57,14 @@ function CategoryList() {
             <div className="categoryList-categories-container">
                 {categories && categories.map((category) => {
                     return (
-                        <div className="categoryList-categories-card" key={category._id}>
+                        <div className="categoryList-categories-card link-with-no-decoration" key={category._id}>
                             <Link to={`/categories/details/${category._id}`}>
                                 <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card category-card-container">
                                     <div className="uk-card-header">
                                         {category.name.length > 18 ?
-                                        (<h3 className="uk-card-title">{category.name.substring(0, 18) + "..."}</h3>) : (<h3 className="uk-card-title">{category.name}</h3>)
-                                    }
-                                        
+                                            (<h3 className="uk-card-title">{category.name.substring(0, 18) + "..."}</h3>) : (<h3 className="uk-card-title">{category.name}</h3>)
+                                        }
+
                                     </div>
                                     <div className="uk-card-body">
                                         {category.description.substring(0, 20) + "..."}

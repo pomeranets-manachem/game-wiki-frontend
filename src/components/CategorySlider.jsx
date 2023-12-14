@@ -27,9 +27,9 @@ function CategorySlider(props) {
                     {categories && categories.map((category) => {
                         return (
 
-                            <li key={category._id} >
+                            <li key={category._id} className="link-with-no-decoration">
                                 <Link to={`/categories/details/${category._id}`}>
-                                    <div className="uk-card uk-card-default uk-card-body category-card category-card-container">
+                                    <div className="uk-card uk-card-default uk-card-hover uk-card-body category-card category-card-container">
                                         <h3 className="uk-card-title">
                                             {category.name}
                                         </h3>

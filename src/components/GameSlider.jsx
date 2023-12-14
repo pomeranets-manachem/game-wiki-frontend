@@ -19,14 +19,14 @@ function CategorySlider(props) {
     }, []);
 
     return (
-        <div>
+        <div className="homepage-game-slider">
             <div className="uk-position-relative uk-visible-toggle uk-light uk-text-center category-slider" tabIndex="-1" uk-slider="true">
                 <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
 
                     {games && games.map((game) => {
                         return (
 
-                            <li key={game._id} >
+                            <li key={game._id} className="link-with-no-decoration">
                                 <Link to={`/games/details/${game._id}`}>
                                     <div className="uk-card uk-card-default uk-card-body category-card homePage-game-slider-game-card">
                                         <img className="homePage-gameSlider-card-image" src={game.imageURL} />
@@ -42,11 +42,6 @@ function CategorySlider(props) {
 
                         )
                     })}
-
-
-
-
-
                 </ul>
 
                 <a className="uk-position-center-left uk-position-small" href="true" uk-slidenav-previous="true" uk-slider-item="previous"></a>
