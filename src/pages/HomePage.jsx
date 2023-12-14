@@ -30,8 +30,7 @@ function HomePage() {
                         <h2 id="homepage-categories-heading">
                             Categories
                         </h2>
-
-                        <Link to="/categories/">
+                        <Link to="/categories/" className="homepage-show-more">
                             Show more...
                         </Link>
                     </div>
@@ -41,7 +40,7 @@ function HomePage() {
                 <div className="homepage-games">
                     <div className="uk-grid uk-flex-between uk-flex-bottom">
                         <h2 id="homepage-games-heading">Games</h2>
-                        <Link to="/games/">
+                        <Link to="/games/" className="homepage-show-more">
                             Show more...
                         </Link>
                     </div>
