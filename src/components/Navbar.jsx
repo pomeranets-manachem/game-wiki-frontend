@@ -53,7 +53,7 @@ function Navbar() {
                   <div className="uk-navbar-dropdown">
                     <ul className="uk-nav uk-navbar-dropdown-nav">
                       <li>
-                        <a href="" onClick={logOutUser}>Logout</a>
+                        <a href="" onClick={logOutUser} id="dropdown-logout">Logout</a>
                       </li>
                     </ul>
                   </div>
