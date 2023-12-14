@@ -59,7 +59,7 @@ function CategoryList() {
                     return (
                         <div key={category._id}>
                             <Link to={`/categories/details/${category._id}`}>
-                                <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card">
+                                <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card category-card-container">
                                     <div className="uk-card-header">
                                         <h3 className="uk-card-title">{category.name}</h3>
                                     </div>
