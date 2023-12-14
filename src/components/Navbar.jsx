@@ -17,6 +17,21 @@ function Navbar() {
                   Home
                 </Link>
               </li>
+              <li className="uk-active">
+                <Link to="/categories" className="">
+                  Categories
+                </Link>
+              </li>
+              <li className="uk-active">
+                <Link to="/games" className="">
+                  Games
+                </Link>
+              </li>
+              <li className="navbar-create-game-btn uk-active">
+              <Link to="/games/create">
+                        <button type="submit" className="uk-button uk-button-primary">Create game</button>
+                    </Link>
+              </li>
             </ul>
           </div>
           <div className="uk-navbar-right">
