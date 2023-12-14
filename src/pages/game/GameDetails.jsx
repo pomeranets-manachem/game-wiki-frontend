@@ -74,30 +74,32 @@ function GameDetails(props) {
                 <div>{game && (<Link to={`/games/edit/${game._id}`}>
                     <button className="uk-margin uk-button uk-button-primary">Edit game</button>
                 </Link>)}</div>
-                
+
             </div>
-            <br/>
+            <br />
 
             <div className="gameDetailsPage-body">
 
                 <div className="gameDetailsPage-general-infos">
-                    
+
                     <div className="gameDetailsPage-general-infos-image">
-                    {game && game.imageURL ? <img src={game.imageURL} alt="" /> : <div className="gameDetailsPage-general-infos-no-image"></div>}
+                        {game && game.imageURL ? <img src={game.imageURL} alt="" /> : <div className="gameDetailsPage-general-infos-no-image"></div>}
                     </div>
                     <div className="uk-flex uk-flex-wrap">
                         {categories && categories.map((category) => {
                             return (
-                                <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
-                                    {category.name}
-                                </div>
+                                <Link to={`/categories/details/${category._id}`}>
+                                    <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                        {category.name}
+                                    </div>
+                                </Link>
                             )
                         })}
                     </div>
                 </div>
 
                 <div className="gameDetailsPage-game-infos">
-  
+
                     <div className="ckeditor">
                         {game && (<CKEditor
                             editor={ClassicEditor}

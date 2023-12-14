@@ -90,7 +90,7 @@ function Comment(props) {
         <div>@{props.comment.author.username}</div>
         <form onSubmit={handleSubmit}>
           <input
-            className="uk-input"
+            className="uk-input comment-input"
             type="text"
             name="editedComment"
             value={editedComment}
