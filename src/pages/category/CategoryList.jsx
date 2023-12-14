@@ -57,7 +57,7 @@ function CategoryList() {
             <div className="uk-grid uk-child-width-1-4@m">
                 {categories && categories.map((category) => {
                     return (
-                        <div key={category._id}>
+                        <div key={category._id} className="category-card-container">
                             <Link to={`/categories/details/${category._id}`}>
                                 <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card">
                                     <div className="uk-card-header">

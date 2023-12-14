@@ -129,7 +129,7 @@ function GameList() {
                 </div>
 
                 <div className="uk-width-expand">
-                    <div className="uk-grid uk-child-width-1-4@m" uk-grid="masonry: pack">
+                    <div className="uk-grid uk-child-width-1-4@m game-card-container" uk-grid="masonry: pack">
                         {games && games.map((game) => {
                             return (
                                 <Link to={`/games/details/${game._id}`} key={game._id}>

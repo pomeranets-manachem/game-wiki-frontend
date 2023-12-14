@@ -29,7 +29,7 @@ function CategorySlider(props) {
 
                             <li key={category._id} className="category-card-container">
                                 <Link to={`/categories/details/${category._id}`}>
-                                    <div className="uk-card uk-card-default uk-card-body category-card homepage-category-card">
+                                    <div className="uk-card uk-card-default uk-card-body uk-card-hover category-card homepage-category-card">
                                         <h3 className="uk-card-title">
                                             {category.name}
                                         </h3>
