@@ -64,7 +64,7 @@ function CategoryList() {
                                         <h3 className="uk-card-title">{category.name}</h3>
                                     </div>
                                     <div className="uk-card-body">
-                                        {category.description}
+                                        {category.description.substring(0, 20) + "..."}
                                     </div>
 
                                 </div>
