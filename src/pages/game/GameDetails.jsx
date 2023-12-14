@@ -88,8 +88,8 @@ function GameDetails(props) {
                     <div className="uk-flex uk-flex-wrap">
                         {categories && categories.map((category) => {
                             return (
-                                <Link to={`/categories/details/${category._id}`}>
-                                    <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                <Link to={`/categories/details/${category._id}`} key={category._id}>
+                                    <div className="category-small-display uk-border-pill uk-margin-top">
                                         {category.name}
                                     </div>
                                 </Link>
