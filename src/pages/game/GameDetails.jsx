@@ -65,91 +65,83 @@ function GameDetails(props) {
     }
 
     return (
-        <div className="uk-container">
+        <div className="gameDetails uk-container">
+
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <h1>{game && game.name}</h1>
 
-            <ul className="uk-list">
-                {game &&
-                    <>
-                        <div className="uk-grid-large">
-                            <div>
-                                {game.imageURL ?
-                                    <img src={game.imageURL} alt="" className="game-detail-image uk-align-right" />
-                                    : ""}
-                            </div>
-                            <div className="">
-                                <li>Game Information
-                                    <div>
-                                        <div className="ckeditor">
-                                            <CKEditor
-                                                editor={ClassicEditor}
-                                                data={game.informations}
-                                                config={{
-                                                    toolbar: []
-                                                }}
-                                                disabled
-                                            />
-                                        </div>
-                                    </div>
-                                </li>
+            <div className="gameDetailsPage-header">
+                <div><h1>{game && game.name}</h1></div>
+                <div>{game && (<Link to={`/games/edit/${game._id}`}>
+                    <button className="uk-margin uk-button uk-button-primary">Edit game</button>
+                </Link>)}</div>
+                
+            </div>
+            <br/>
 
+            <div className="gameDetailsPage-body">
 
-                                <li>
-                                    <div className="uk-flex uk-flex-wrap">
-                                        {categories && categories.map((category) => {
-                                            return (
-                                                <Link to={`/categories/details/${category._id}`}>
-                                                    <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
-                                                        {category.name}
-                                                    </div>
-                                                </Link>
-                                            )
-                                        })}
-                                    </div>
-                                </li>
-
-                                <div className="uk-margin">
-                                    <Link to={`/games/edit/${game._id}`}>
-                                        <button className="uk-margin uk-button uk-button-primary">Edit game</button>
-                                    </Link>
+                <div className="gameDetailsPage-general-infos">
+                    
+                    <div className="gameDetailsPage-general-infos-image">
+                    {game && game.imageURL ? <img src={game.imageURL} alt="" /> : <div className="gameDetailsPage-general-infos-no-image"></div>}
+                    </div>
+                    <div className="uk-flex uk-flex-wrap">
+                        {categories && categories.map((category) => {
+                            return (
+                                <div key={category._id} className="category-small-display uk-border-pill uk-margin-top">
+                                    {category.name}
                                 </div>
-                            </div>
+                            )
+                        })}
+                    </div>
+                </div>
 
+                <div className="gameDetailsPage-game-infos">
+  
+                    <div className="ckeditor">
+                        {game && (<CKEditor
+                            editor={ClassicEditor}
+                            data={game.informations}
+                            config={{
+                                toolbar: []
+                            }}
+                            disabled
+                        />)}
+                    </div>
+                </div>
 
+            </div>
 
+            <div className="gameDetails-comments">
+                <h2>Comments</h2>
 
-                        </div>
-                        <h2>Comments</h2>
+                <section className="comment-section">
+                    {user ?
+                        <form onSubmit={handleSubmit}>
+                            <input className="uk-input" type="text" name="comment" value={comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
+                            <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Add</button>
+                        </form>
+                        :
+                        <Link to={"/login"}>Log in to comment !</Link>
+                    }
+                    <div className="display-comments">
+                        {comments && comments.length > 0 ?
+                            <>
+                                {comments.map(comment => {
+                                    return (
+                                        <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetSorteredCommentsbyNewest={setSorteredCommentsbyNewest} />
+                                    );
+                                })}
+                            </> :
+                            <>
+                                <p>No related comments...</p>
+                            </>
+                        }
+                    </div>
+                </section>
+            </div>
 
-                        <section className="comment-section">
-                            {user ?
-                                <form onSubmit={handleSubmit}>
-                                    <input className="uk-input" type="text" name="comment" value={comment} onChange={(e) => { setComment(e.target.value) }} size="100"></input>
-                                    <button className="uk-align-right uk-button uk-button-default uk-button-small" type="submit">Add</button>
-                                </form>
-                                :
-                                <Link to={"/login"}>Log in to comment !</Link>
-                            }
-                            <div className="display-comments">
-                                {comments && comments.length > 0 ?
-                                    <>
-                                        {comments.map(comment => {
-                                            return (
-                                                <Comment key={comment._id} user={user} comment={comment} gameId={gameId} callbackToSetSorteredCommentsbyNewest={setSorteredCommentsbyNewest} />
-                                            );
-                                        })}
-                                    </> :
-                                    <>
-                                        <p>No related comments...</p>
-                                    </>
-                                }
-                            </div>
-                        </section>
-                    </>
-                }
-            </ul >
-        </div >
+        </div>
     )
 }
 
