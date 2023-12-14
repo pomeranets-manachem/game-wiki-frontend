@@ -32,7 +32,6 @@ function CategorySlider(props) {
                                         <h3 className="uk-card-title">
                                             {game.name}
                                         </h3>
-                                        <p>{game.informations.substring(0, 20) + "..."}</p>
                                     </div>
                                 </Link>
                             </li>
