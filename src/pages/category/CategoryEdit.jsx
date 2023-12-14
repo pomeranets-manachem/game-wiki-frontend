@@ -82,8 +82,10 @@ function CategoryEdit(props) {
                         <input type="text" id="category-informations-input" className="uk-input" value={categoryDescription} onChange={handleCategoryDescription} />
                     </div>
                     <button type="submit" className="uk-button uk-button-primary uk-align-right">Save</button>
+                    <button onClick={() => { navigate(-1) }} className="uk-button uk-button-secondary">Cancel</button>
                 </form>
-                <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
+
+                <button onClick={handleDelete} className="uk-margin uk-button uk-button-danger uk-align-left">DELETE</button>
             </div>
         </div>
     )

@@ -49,7 +49,8 @@ function CategoryCreate(props) {
                         <label htmlFor="category-informations-input">Information</label>
                         <input className="uk-input" type="text" id="category-informations-input" value={categoryDescription} onChange={handleCategoryDescription} />
                     </div>
-                    <button type="submit" className="uk-button uk-button-primary">Create category</button>
+                    <button type="submit" className="uk-button uk-button-primary uk-align-right">Save</button>
+                    <button onClick={() => { navigate(-1) }} className="uk-button uk-button-secondary uk-align-left">Cancel</button>
                 </form>
             </div>
         </div>

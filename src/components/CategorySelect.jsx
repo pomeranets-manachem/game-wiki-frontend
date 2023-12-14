@@ -39,6 +39,7 @@ function CategorySelect(props) {
                     options={categoriesOptions}
                     value={props.value}
                     onChange={props.onChange}
+                    menuPosition='fixed'
                     isMulti
                 />
                 : ""

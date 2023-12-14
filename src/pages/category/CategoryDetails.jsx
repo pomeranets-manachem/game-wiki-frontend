@@ -44,7 +44,7 @@ function CategoryDetails(props) {
             {category &&
                 <>
                     <h1>{category.name} Details</h1>
-                    <p>{category.description}</p>
+                    <p className="category-details-description">{category.description}</p>
 
                     <Link to={`/categories/edit/${category._id}`}>
                         <button className="uk-button uk-button-primary">Edit category</button>
