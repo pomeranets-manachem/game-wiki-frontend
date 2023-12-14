@@ -129,19 +129,23 @@ function GameList() {
                 </div>
 
                 <div className="uk-width-expand">
-                    <div className="uk-grid uk-child-width-1-4@m link-with-no-decoration" uk-grid="masonry: pack">
+                    <div className="gameList-games-container">
                         {games && games.map((game) => {
                             return (
+                                <div className="gameList-games-card">
                                 <Link to={`/games/details/${game._id}`} key={game._id}>
                                     <div className="uk-card uk-card-default category-card">
                                         <div className="uk-card-media-top">
                                             {game.imageURL && <img src={`${game.imageURL}`} width="1800" height="1200" alt="" className="game-card-image" />}
                                         </div>
-                                        <div className="uk-card-body">
-                                            <h3 className="uk-card-title">{game.name}</h3>
+                                        <div className="uk-card-body uk-inline">
+                                        {game.name.length > 18 ?
+                                        (<h3 className="uk-card-title uk-align-center ">{game.name.substring(0, 18) + "..."}</h3>) : (<h3 className="uk-card-title">{game.name}</h3>)
+                                    }
                                         </div>
                                     </div>
                                 </Link>
+                                </div>
                             )
                         })}
                     </div>
