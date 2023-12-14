@@ -10,7 +10,7 @@ function CategorySlider(props) {
         gameService
             .getGamesList()
             .then((response) => {
-                setGames(response.data);
+                setGames(response.data.slice(0, 7));
             })
             .catch((error) => {
                 const errorDescription = error.response.data.message;
