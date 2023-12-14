@@ -33,12 +33,6 @@ function HomePage() {
                     </div>
                     <GameSlider></GameSlider>
                 </div>
-
-                <div className="uk-text-right">
-                    <Link to="/games/create">
-                        <button type="submit" className="uk-margin uk-button uk-button-primary">Create game</button>
-                    </Link>
-                </div>
             </div>
         </div>
     );
