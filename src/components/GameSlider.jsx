@@ -27,33 +27,38 @@ function CategorySlider(props) {
 
     return (
         <div className="homepage-game-slider">
-            <div className="uk-position-relative uk-visible-toggle uk-light uk-text-center category-slider" tabIndex="-1" uk-slider="true">
-                <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+            <div uk-slider="true">
+                <div className="uk-position-relative">
+                    <div className="uk-slider-container uk-light" tabIndex="-1" uk-slider="true">
+                        <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
 
-                    {games && games.map((game) => {
-                        return (
+                            {games && games.map((game) => {
+                                return (
 
-                            <li key={game._id} className="link-with-no-decoration">
-                                <Link to={`/games/details/${game._id}`}>
-                                    <div className="uk-card uk-card-default uk-card-body category-card homePage-game-slider-game-card">
-                                        <img className="homePage-gameSlider-card-image" src={game.imageURL} />
-                                        <div className="homePage-gameSlider-card-name">
-                                            <h3 className="uk-card-title">
-                                                {game.name}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </li>
+                                    <li key={game._id} className="link-with-no-decoration">
+                                        <Link to={`/games/details/${game._id}`}>
+                                            <div className="uk-card uk-card-default uk-card-body category-card homePage-game-slider-game-card">
+                                                <img className="homePage-gameSlider-card-image" src={game.imageURL} />
+                                                <div className="homePage-gameSlider-card-name">
+                                                    <h3 className="uk-card-title">
+                                                        {game.name}
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
 
 
-                        )
-                    })}
-                </ul>
+                                )
+                            })}
+                        </ul>
 
-                <a className="uk-position-center-left uk-position-small" href="true" uk-slidenav-previous="true" uk-slider-item="previous"></a>
-                <a className="uk-position-center-right uk-position-small" href="true" uk-slidenav-next="true" uk-slider-item="next"></a>
-                <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                        <a className="uk-position-center-left-out uk-position-small left-arrow" href="true" uk-slidenav-previous="true" uk-slider-item="previous"></a>
+                        <a className="uk-position-center-right-out uk-position-small right-arrow" href="true" uk-slidenav-next="true" uk-slider-item="next"></a>
+
+                        <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                    </div>
+                </div>
             </div>
             <div className="dice-container">
                 <i className="fa-solid fa-dice fa-2xl dice" onClick={randomGameClick}></i>
