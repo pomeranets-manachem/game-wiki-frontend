@@ -136,6 +136,7 @@ function GameEdit(props) {
                         <h3>Select categories</h3>
                         <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
                         <button type="submit" className="uk-margin uk-button uk-button-primary uk-align-right">Save</button>
+                        <button onClick={() => { navigate(-1) }} className="uk-margin uk-button uk-button-secondary">Cancel</button>
                     </div>
                     <button onClick={handleDelete} className="uk-button uk-button-danger uk-align-left">DELETE</button>
                 </form>

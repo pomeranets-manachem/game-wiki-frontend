@@ -72,7 +72,8 @@ function GameCreate(props) {
 
                     <h3>Select categories</h3>
                     <CategorySelect value={selectedCategories} onChange={handleCategoriesSelect} />
-                    <button type="submit" className="uk-margin uk-button uk-button-primary">Create game</button>
+                    <button type="submit" className="uk-margin uk-button uk-button-primary uk-align-right">Create game</button>
+                    <button onClick={() => { navigate(-1) }} className="uk-margin uk-button uk-button-secondary uk-align-left">Cancel</button>
                 </form>
             </div>
         </div>
