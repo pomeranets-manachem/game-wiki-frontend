@@ -12,25 +12,25 @@ function Navbar() {
         <div uk-navbar="true">
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
-              <li className="uk-active">
+              <li className="">
                 <Link to="/" className="">
                   Home
                 </Link>
               </li>
-              <li className="uk-active">
+              <li className="">
                 <Link to="/categories" className="">
                   Categories
                 </Link>
               </li>
-              <li className="uk-active">
+              <li className="">
                 <Link to="/games" className="">
                   Games
                 </Link>
               </li>
-              <li className="navbar-create-game-btn uk-active">
-              <Link to="/games/create">
-                        <button type="submit" className="uk-button uk-button-primary">Create game</button>
-                    </Link>
+              <li className="">
+                <Link to="/games/create">
+                  <button type="submit" className="uk-button uk-button-primary navbar-create-game-btn">Create game</button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -45,7 +45,7 @@ function Navbar() {
               )}
 
               {isLoggedIn && (
-                <li>
+                <li className="nav-user">
                   <a className="" href="#" id="" uk-icon="icon: user">{user && user.username}</a>
                   <div className="uk-navbar-dropdown">
                     <ul className="uk-nav uk-navbar-dropdown-nav">

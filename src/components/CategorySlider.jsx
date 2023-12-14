@@ -33,10 +33,7 @@ function CategorySlider(props) {
                                         <h3 className="uk-card-title">
                                             {category.name}
                                         </h3>
-
-                                        <p>{category.description.substring(0, 20) + "..."}</p>
-
-
+                                        <p className="category-card-description">{category.description.substring(0, 20) + "..."}</p>
                                     </div>
                                 </Link>
                             </li>

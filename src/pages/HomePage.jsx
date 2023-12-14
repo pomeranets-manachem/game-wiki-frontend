@@ -22,7 +22,7 @@ function HomePage() {
 
                     <p>Whether you are a die-hard fan or just starting your journey into the gaming realm, our wiki is the perfect place to expand your knowledge, connect with fellow gamers, and uncover hidden gems. Together, let's build a vibrant hub of gaming wisdom and camaraderie.</p>
 
-                    Start exploring now, join the discussions, and let the games begin!
+                    <p>Start exploring now, join the discussions, and let the games begin!</p>
                 </div>
 
                 <div className="homepage-categories">
