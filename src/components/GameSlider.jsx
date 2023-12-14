@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import gameService from "../services/game.service";
 
 function CategorySlider(props) {
 
     const [games, setGames] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         gameService
@@ -17,6 +19,11 @@ function CategorySlider(props) {
                 console.log("API: Error while getting the list of games ", errorDescription)
             })
     }, []);
+
+    const randomGameClick = (event) => {
+        const randomGame = games[Math.floor(Math.random() * games.length)];
+        if (randomGame) navigate(`/games/details/${randomGame._id}`);
+    }
 
     return (
         <div className="homepage-game-slider">
@@ -48,7 +55,9 @@ function CategorySlider(props) {
                 <a className="uk-position-center-right uk-position-small" href="true" uk-slidenav-next="true" uk-slider-item="next"></a>
                 <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
             </div>
-
+            <div className="dice-container">
+                <i className="fa-solid fa-dice fa-2xl dice" onClick={randomGameClick}></i>
+            </div>
         </div >
     )
 }
