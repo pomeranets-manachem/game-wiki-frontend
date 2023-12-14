@@ -8,9 +8,10 @@ function ProfilePage() {
       {user &&
         <>
           <h1>Profile</h1>
-
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
+          <section className="profile-info">
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+          </section>
         </>
       }
     </div>
