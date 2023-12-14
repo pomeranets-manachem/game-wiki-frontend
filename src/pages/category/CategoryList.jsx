@@ -54,14 +54,17 @@ function CategoryList() {
                 />
             </form>
 
-            <div className="uk-grid uk-child-width-1-4@m">
+            <div className="categoryList-categories-container">
                 {categories && categories.map((category) => {
                     return (
-                        <div key={category._id} className="category-card-container">
+                        <div className="categoryList-categories-card category-card-container" key={category._id}>
                             <Link to={`/categories/details/${category._id}`}>
-                                <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card">
+                                <div className="uk-margin-medium-top uk-card uk-card-hover uk-card-small uk-card-secondary category-card category-card-container">
                                     <div className="uk-card-header">
-                                        <h3 className="uk-card-title">{category.name}</h3>
+                                        {category.name.length > 18 ?
+                                        (<h3 className="uk-card-title">{category.name.substring(0, 18) + "..."}</h3>) : (<h3 className="uk-card-title">{category.name}</h3>)
+                                    }
+                                        
                                     </div>
                                     <div className="uk-card-body">
                                         {category.description.substring(0, 20) + "..."}
