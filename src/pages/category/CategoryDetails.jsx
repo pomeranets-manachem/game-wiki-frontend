@@ -60,18 +60,23 @@ function CategoryDetails(props) {
                             placeholder="Search"
                         />
                     </form>
-                    <ul className="uk-list">
+
+                    <div className="uk-width-expand categoryDetails-relatedGames">
+                    <div className="uk-grid uk-child-width-1-4@m categoryDetails-game-cards" uk-grid="masonry: pack">
                         {relatedGames && relatedGames.map((game) => {
                             return (
-
-                                <li key={game._id}>
-                                    <Link to={`/games/details/${game._id}`}>
-                                        {game.name}
-                                    </Link>
-                                </li>
+                                <Link to={`/games/details/${game._id}`} key={game._id}>
+                                    <div className="uk-card uk-card-default category-card categoryDetails-game-card">
+                                            {game.imageURL && <img src={`${game.imageURL}`} width="1800" height="1200" alt="" className="game-card-image" />}
+                                        <div className="uk-card-body categoryDetails-game-card-title">
+                                            <h3 className="uk-card-title">{game.name}</h3>
+                                        </div>
+                                    </div>
+                                </Link>
                             )
                         })}
-                    </ul>
+                    </div>
+                </div>
                 </>
             }
         </div >
