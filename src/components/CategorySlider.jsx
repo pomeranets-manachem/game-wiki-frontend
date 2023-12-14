@@ -49,7 +49,7 @@ function CategorySlider(props) {
                 <a className="uk-position-center-left uk-position-small" href="true" uk-slidenav-previous="true" uk-slider-item="previous"></a>
                 <a className="uk-position-center-right uk-position-small" href="true" uk-slidenav-next="true" uk-slider-item="next"></a>
 
-                <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
             </div>
 
         </div >
