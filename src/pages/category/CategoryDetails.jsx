@@ -62,7 +62,7 @@ function CategoryDetails(props) {
                     </form>
 
                     <div className="uk-width-expand categoryDetails-relatedGames">
-                    <div className="uk-grid uk-child-width-1-4@m categoryDetails-game-cards" uk-grid="masonry: pack">
+                    <div className="uk-grid uk-child-width-1-4@m categoryDetails-game-cards link-with-no-decoration" uk-grid="masonry: pack">
                         {relatedGames && relatedGames.map((game) => {
                             return (
                                 <Link to={`/games/details/${game._id}`} key={game._id}>
