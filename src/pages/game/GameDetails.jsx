@@ -52,6 +52,7 @@ function GameDetails(props) {
                 gameService
                     .getGame(gameId)
                     .then((response) => {
+                        setComment("");
                         setSorteredCommentsbyNewest(response.data.comments)
                     })
                     .catch((error) => {
