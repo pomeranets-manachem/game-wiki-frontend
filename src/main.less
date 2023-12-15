@@ -109,7 +109,7 @@ p {
 .category-card {
     border-radius: 1em;
     background-color: @second-color;
-    height: 100%;
+    height: fit-content;
 }
 
 .category-card-description,
@@ -293,29 +293,6 @@ p {
     max-height: 200px;
 }
 
-.homePage-gameSlider-card-image {
-    border-radius: 1em;
-    opacity: 0.3;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.homePage-gameSlider-card-image:hover {
-    border-radius: 1em;
-    opacity: 0.6;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.homePage-gameSlider-card-name {
-    position: relative;
-}
 
 .profile-info>p {
     color: white
@@ -368,3 +345,30 @@ p {
 .right-arrow {
     top: 30%;
 }
+
+.gameSlider-card {
+    position: relative;
+    border-radius: 1em;
+    height: 10em;
+}
+
+.gameSlider-card:hover {
+    opacity: 0.1;
+
+}
+
+.gameSlider-card-name {
+    z-index: -1;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
