@@ -72,13 +72,15 @@ function Comment(props) {
       </div>
       {props.user && props.user.username === props.comment.author.username ? (
         <div className="uk-align-right">
-          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => { 
-           setEditedComment(props.comment.comment)
+          <button className="comment-button uk-button uk-button-default uk-button-small" onClick={() => {
+            setEditedComment(props.comment.comment)
             setIsEditCommentMode(true)
           }}
-            >Edit</button>
+          ><i className="fa-regular fa-pen-to-square comment-edit-icon"></i>
+            Edit
+          </button>
           <button className="comment-button uk-button uk-button-danger uk-button-small" onClick={() => deleteComment()}>
-            <span uk-icon="icon: trash"></span>
+            <i className="fa-solid fa-trash"></i>
           </button>
         </div>
       ) : ""
